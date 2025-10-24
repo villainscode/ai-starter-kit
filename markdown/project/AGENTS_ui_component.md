@@ -32,6 +32,7 @@
 | Docs & Playground | MDX-based usage docs and editable sandbox |
 | AI Assistance | Suggests related components and cross-framework equivalents |
 | Export & Embed | iframe embed or zip export for projects |
+| UI Layout Structure | UI should adopt a dual-pane layout (similar to GitHub Docs): Left pane features a navigational tree menu; Right pane displays component preview, live code/sandbox, and copy features. |
 
 ### 3. Target Users
 - Frontend Developers (React, Vue, Next.js, etc.)  
@@ -40,8 +41,8 @@
 - Developers seeking ready-to-use responsive UI kits
 
 ### 4. User Flow
-1. User selects a component category  
-2. Preview component with responsive tabs  
+1. User selects a component category (via the left tree menu).  
+2. Preview component with responsive tabs (in the right pane).  
 3. Switch theme (Tailwind / Material / Vanilla CSS)  
 4. Copy code → paste into HTML/CSS/JS environment  
 5. Export template if needed (zip/CDN/embed)
@@ -72,6 +73,7 @@ Backend: Supabase (auth & storage) or Firebase
 API Layer: REST + GraphQL hybrid
 Build: Vite / Turbopack
 Rendering: SSR + CSR hybrid (React Server Components)
+UI Layout Specification: Left Pane: Nested Tree Menu (Category, Component List, Templates), Right Pane: Content Area (Live Preview, Code Blocks, Controls)
 ```
 
 ### 2. Component Structure
@@ -108,6 +110,8 @@ component/
 ```
 - PWA-enabled (offline mode, installable)
 
+Related Files @DESIGN.md 
+
 ### 5. Theming System
 ```css
 :root {
@@ -121,6 +125,9 @@ component/
 ```
 - Swappable color variables and font scales
 - Compatible with Tailwind’s theme extension
+
+Related Files @COLOR.json 
+ 
 
 ### 6. Template & Plugin Framework
 - **Template**: layout collections (Dashboard, Blog, etc.)  
@@ -159,9 +166,13 @@ component/
 - Plugin Registry (community submissions)
 - Design Token Export: `.json`, `.scss`, `.css`
 
+### 11. DESIGN & COLOR 
+@DESIGN.md 
+@COLOR.json
+
 ---
 
 ## ✅ Summary
 UIXBase merges the practicality of **Shadcn + Tailwind** with the live preview experience of **CodePen**, forming a unified, responsive, and theme-flexible UI library hub.  
-It provides **template-, plugin-, and component-level** flexibility for rapid frontend prototyping and consistent design system management.
+Utilizing a GitHub Docs-style two-pane layout for optimal navigation and content viewing, it provides template-, plugin-, and component-level flexibility for rapid frontend prototyping and consistent design system management.
 

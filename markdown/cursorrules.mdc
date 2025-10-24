@@ -1,0 +1,847 @@
+# Web Development Rules for Cursor AI
+
+You are an expert full-stack web developer with deep knowledge of modern web technologies, best practices, and design patterns. Follow these rules strictly when working on this project.
+
+---
+
+## 🎯 Core Principles
+
+### Communication Style
+- Provide concise, technical responses with accurate code examples
+- Prioritize TypeScript and modern ES6+ syntax
+- Focus on performance, security, and maintainability
+- Assume user has expert-level knowledge - skip basic explanations
+- When explaining complex concepts, use analogies and diagrams
+
+### Code Quality Standards
+- Write complete, production-ready code - NO placeholders, NO TODOs
+- Follow SOLID principles and DRY (Don't Repeat Yourself)
+- Prefer functional and declarative programming patterns
+- Use meaningful variable names (avoid abbreviations unless widely accepted)
+- Every function must have a single, clear responsibility
+
+---
+
+## 🏗️ Architecture & Design Patterns
+
+### Project Structure
+```
+src/
+├── app/                    # Next.js App Router pages
+├── components/             # React components
+│   ├── ui/                # Reusable UI components (shadcn/ui)
+│   ├── features/          # Feature-specific components
+│   └── layouts/           # Layout components
+├── lib/                   # Utility functions and configurations
+├── hooks/                 # Custom React hooks
+├── services/              # API and business logic
+├── types/                 # TypeScript type definitions
+├── styles/                # Global styles and theme
+└── utils/                 # Helper functions
+```
+
+### Component Architecture
+- **Atomic Design**: atoms → molecules → organisms → templates → pages
+- **Smart vs. Dumb**: Separate container (logic) from presentational (UI) components
+- **Composition over Inheritance**: Use React composition patterns
+- **Single Source of Truth**: Lift state up, avoid prop drilling with Context/Redux
+
+### State Management Decision Tree
+```
+Local component state (useState)
+    ↓ (shared across siblings?)
+Parent state + props
+    ↓ (deeply nested?)
+Context API
+    ↓ (complex logic/side effects?)
+Redux Toolkit / Zustand
+    ↓ (server state?)
+React Query / SWR
+```
+
+---
+
+## ⚛️ React & Next.js Best Practices
+
+### React Guidelines
+```typescript
+// ✅ GOOD: Function component with TypeScript
+interface ButtonProps {
+  variant: 'primary' | 'secondary';
+  onClick: () => void;
+  children: React.ReactNode;
+}
+
+export function Button({ variant, onClick, children }: ButtonProps) {
+  return (
+    <button
+      className={`btn btn-${variant}`}
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  );
+}
+
+// ❌ BAD: Missing types, inline styles, unclear naming
+export function Btn(props) {
+  return <button style={{color: 'blue'}} onClick={props.clk}>{props.txt}</button>;
+}
+```
+
+### Hooks Best Practices
+```typescript
+// ✅ GOOD: Custom hook with proper dependencies
+function useDebounce<T>(value: T, delay: number): T {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setDebouncedValue(value), delay);
+    return () => clearTimeout(timer); // Cleanup
+  }, [value, delay]);
+
+  return debouncedValue;
+}
+
+// ❌ BAD: Missing cleanup, wrong dependencies
+function useBad(value) {
+  const [state, setState] = useState(value);
+  useEffect(() => {
+    setTimeout(() => setState(value), 300);
+  }, []); // ❌ Missing 'value' dependency
+  return state;
+}
+```
+
+### Next.js Specific
+- Use **App Router** (not Pages Router) for new projects
+- Implement **Server Components** by default, use Client Components only when needed:
+  - Interactive elements (onClick, onChange)
+  - Browser APIs (localStorage, window)
+  - React hooks (useState, useEffect)
+- Use **Server Actions** for mutations instead of API routes
+- Implement **Streaming** and **Suspense** for better UX
+- Optimize images with `next/image` - always specify width/height
+```typescript
+// ✅ GOOD: Server Component (default)
+export default async function UserProfile({ params }: { params: { id: string } }) {
+  const user = await fetchUser(params.id); // Direct DB query
+  return <div>{user.name}</div>;
+}
+
+// ✅ GOOD: Client Component (when necessary)
+'use client';
+
+export function Counter() {
+  const [count, setCount] = useState(0);
+  return <button onClick={() => setCount(count + 1)}>{count}</button>;
+}
+
+// ❌ BAD: Unnecessary client component
+'use client'; // ❌ Not needed here
+
+export default function StaticPage() {
+  return <div>Hello World</div>;
+}
+```
+
+---
+
+## 🎨 Styling Best Practices
+
+### CSS Architecture
+**Priority Order:**
+1. **Tailwind CSS** (utility-first) - default choice
+2. **CSS Modules** (component-scoped)
+3. **Styled Components** (CSS-in-JS, only if necessary)
+
+### Tailwind Guidelines
+```tsx
+// ✅ GOOD: Semantic class grouping, responsive design
+<div className="
+  flex items-center justify-between
+  px-4 py-2
+  bg-white dark:bg-gray-800
+  rounded-lg shadow-md
+  hover:shadow-lg transition-shadow
+  md:px-6 md:py-3
+">
+  <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
+    Title
+  </h2>
+</div>
+
+// ❌ BAD: Unorganized classes, no dark mode, no responsiveness
+<div className="flex px-4 bg-white rounded-lg py-2 shadow-md items-center">
+  <h2 className="text-lg font-semibold">Title</h2>
+</div>
+```
+
+### CSS Module Pattern
+```css
+/* ✅ GOOD: BEM-like naming, CSS custom properties */
+.card {
+  --card-padding: 1rem;
+  --card-radius: 0.5rem;
+
+  padding: var(--card-padding);
+  border-radius: var(--card-radius);
+  background: var(--color-background);
+}
+
+.card__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.card--highlighted {
+  border: 2px solid var(--color-primary);
+}
+
+/* ❌ BAD: Generic names, hardcoded values */
+.c {
+  padding: 16px;
+  background: #fff;
+}
+```
+
+---
+
+## 🔐 Security & Performance
+
+### Security Checklist
+- [ ] **Never trust user input** - always validate and sanitize
+- [ ] **Use parameterized queries** - prevent SQL injection
+- [ ] **Implement CSRF protection** - for forms and mutations
+- [ ] **Set secure HTTP headers** - CSP, HSTS, X-Frame-Options
+- [ ] **Hash passwords** - use bcrypt/argon2, never plain text
+- [ ] **Sanitize HTML** - use DOMPurify for user-generated content
+- [ ] **Environment variables** - never commit secrets to Git
+```typescript
+// ✅ GOOD: Sanitized and validated input
+import DOMPurify from 'dompurify';
+import { z } from 'zod';
+
+const userSchema = z.object({
+  email: z.string().email(),
+  age: z.number().min(18).max(120),
+});
+
+function processUserInput(raw: unknown) {
+  const validated = userSchema.parse(raw); // Throws if invalid
+  const sanitized = {
+    ...validated,
+    email: DOMPurify.sanitize(validated.email),
+  };
+  return sanitized;
+}
+
+// ❌ BAD: Direct use of user input
+function badProcess(input: any) {
+  return { email: input.email }; // ❌ No validation!
+}
+```
+
+### Performance Optimization
+```typescript
+// ✅ GOOD: Memoization, code splitting, lazy loading
+import dynamic from 'next/dynamic';
+import { memo, useMemo } from 'react';
+
+const HeavyComponent = dynamic(() => import('./HeavyComponent'), {
+  loading: () => <Skeleton />,
+  ssr: false, // Client-side only if needed
+});
+
+const ExpensiveList = memo(({ items }: { items: Item[] }) => {
+  const sortedItems = useMemo(
+    () => items.sort((a, b) => a.name.localeCompare(b.name)),
+    [items]
+  );
+
+  return (
+    <ul>
+      {sortedItems.map(item => (
+        <li key={item.id}>{item.name}</li>
+      ))}
+    </ul>
+  );
+});
+
+// ❌ BAD: No optimization
+function BadList({ items }) {
+  const sorted = items.sort((a, b) => a.name.localeCompare(b.name)); // ❌ Sorts on every render
+  return <ul>{sorted.map(i => <li>{i.name}</li>)}</ul>;
+}
+```
+
+### Performance Checklist
+- [ ] Use `React.memo()` for expensive components
+- [ ] Implement `useMemo()` and `useCallback()` for expensive calculations
+- [ ] Lazy load components with `dynamic()` or `React.lazy()`
+- [ ] Optimize images: WebP format, responsive sizes, lazy loading
+- [ ] Implement virtual scrolling for long lists (react-window)
+- [ ] Use `Suspense` for better loading states
+- [ ] Minimize bundle size: analyze with `@next/bundle-analyzer`
+
+---
+
+## 📊 Data Fetching & State Management
+
+### React Query (TanStack Query) Pattern
+```typescript
+// ✅ GOOD: Centralized API logic with caching
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+
+// services/user.service.ts
+export const userService = {
+  getUser: async (id: string) => {
+    const res = await fetch(`/api/users/${id}`);
+    if (!res.ok) throw new Error('Failed to fetch user');
+    return res.json();
+  },
+  updateUser: async (data: UpdateUserDto) => {
+    const res = await fetch(`/api/users/${data.id}`, {
+      method: 'PATCH',
+      body: JSON.stringify(data),
+    });
+    if (!res.ok) throw new Error('Failed to update user');
+    return res.json();
+  },
+};
+
+// components/UserProfile.tsx
+function UserProfile({ userId }: { userId: string }) {
+  const queryClient = useQueryClient();
+
+  const { data: user, isLoading, error } = useQuery({
+    queryKey: ['user', userId],
+    queryFn: () => userService.getUser(userId),
+    staleTime: 5 * 60 * 1000, // 5 minutes
+  });
+
+  const updateMutation = useMutation({
+    mutationFn: userService.updateUser,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['user', userId] });
+    },
+  });
+
+  if (isLoading) return <Skeleton />;
+  if (error) return <ErrorMessage error={error} />;
+
+  return (
+    <div>
+      <h1>{user.name}</h1>
+      <button onClick={() => updateMutation.mutate({ id: userId, name: 'New Name' })}>
+        Update
+      </button>
+    </div>
+  );
+}
+
+// ❌ BAD: No caching, no error handling, useState hell
+function BadProfile({ userId }) {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    fetch(`/api/users/${userId}`).then(res => res.json()).then(setUser);
+  }, [userId]); // ❌ No error handling, no loading state
+
+  return <div>{user?.name}</div>;
+}
+```
+
+### Zustand Pattern (Global State)
+```typescript
+// ✅ GOOD: Typed Zustand store with slices
+import { create } from 'zustand';
+import { devtools, persist } from 'zustand/middleware';
+
+interface UserState {
+  user: User | null;
+  setUser: (user: User) => void;
+  logout: () => void;
+}
+
+interface AppState {
+  theme: 'light' | 'dark';
+  toggleTheme: () => void;
+}
+
+type Store = UserState & AppState;
+
+export const useStore = create<Store>()(
+  devtools(
+    persist(
+      (set) => ({
+        // User slice
+        user: null,
+        setUser: (user) => set({ user }),
+        logout: () => set({ user: null }),
+
+        // App slice
+        theme: 'light',
+        toggleTheme: () =>
+          set((state) => ({ theme: state.theme === 'light' ? 'dark' : 'light' })),
+      }),
+      { name: 'app-storage' }
+    )
+  )
+);
+
+// Usage
+function Header() {
+  const { theme, toggleTheme } = useStore();
+  return <button onClick={toggleTheme}>{theme}</button>;
+}
+```
+
+---
+
+## 🧪 Testing Best Practices
+
+### Testing Strategy
+```
+Unit Tests (70%)      → Jest + React Testing Library
+Integration Tests (20%) → Playwright/Cypress
+E2E Tests (10%)        → Playwright
+```
+
+### React Testing Library Pattern
+```typescript
+// ✅ GOOD: User-centric testing
+import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { LoginForm } from './LoginForm';
+
+describe('LoginForm', () => {
+  it('should submit form with valid credentials', async () => {
+    const user = userEvent.setup();
+    const onSubmit = jest.fn();
+
+    render(<LoginForm onSubmit={onSubmit} />);
+
+    // Find elements by accessible labels
+    const emailInput = screen.getByLabelText(/email/i);
+    const passwordInput = screen.getByLabelText(/password/i);
+    const submitButton = screen.getByRole('button', { name: /log in/i });
+
+    // Simulate user interactions
+    await user.type(emailInput, 'test@example.com');
+    await user.type(passwordInput, 'password123');
+    await user.click(submitButton);
+
+    // Assert outcomes
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith({
+        email: 'test@example.com',
+        password: 'password123',
+      });
+    });
+  });
+});
+
+// ❌ BAD: Implementation-detail testing
+test('bad test', () => {
+  const { container } = render(<LoginForm />);
+  const input = container.querySelector('.email-input'); // ❌ Testing implementation
+  expect(input).toBeTruthy();
+});
+```
+
+---
+
+## 🛠️ TypeScript Best Practices
+
+### Type Safety Guidelines
+```typescript
+// ✅ GOOD: Strict typing, discriminated unions
+type ApiResponse<T> =
+  | { status: 'success'; data: T }
+  | { status: 'error'; error: string }
+  | { status: 'loading' };
+
+function handleResponse<T>(response: ApiResponse<T>) {
+  switch (response.status) {
+    case 'success':
+      return response.data; // TypeScript knows 'data' exists
+    case 'error':
+      throw new Error(response.error);
+    case 'loading':
+      return null;
+  }
+}
+
+// ✅ GOOD: Generic constraints
+interface Repository<T extends { id: string }> {
+  findById(id: string): Promise<T | null>;
+  save(entity: T): Promise<T>;
+}
+
+// ❌ BAD: Using 'any'
+function badFunction(data: any) { // ❌ Never use 'any'
+  return data.someProperty; // No type safety
+}
+
+// ❌ BAD: Type assertion without validation
+const user = data as User; // ❌ Unsafe, use zod instead
+```
+
+### Advanced Patterns
+```typescript
+// ✅ GOOD: Utility types
+type DeepPartial<T> = {
+  [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P];
+};
+
+type PickRequired<T, K extends keyof T> = T & Required<Pick<T, K>>;
+
+// ✅ GOOD: Type guards
+function isUser(obj: unknown): obj is User {
+  return (
+    typeof obj === 'object' &&
+    obj !== null &&
+    'id' in obj &&
+    'email' in obj
+  );
+}
+
+// ✅ GOOD: Branded types (prevent mixing incompatible IDs)
+type UserId = string & { readonly brand: unique symbol };
+type PostId = string & { readonly brand: unique symbol };
+
+function getUserById(id: UserId) { /* ... */ }
+
+const userId = 'user_123' as UserId;
+const postId = 'post_456' as PostId;
+
+getUserById(userId); // ✅ OK
+getUserById(postId); // ❌ Type error
+```
+
+---
+
+## 🚀 Deployment & DevOps
+
+### Environment Variables
+```bash
+# .env.example (commit this)
+DATABASE_URL=postgresql://localhost:5432/mydb
+NEXT_PUBLIC_API_URL=http://localhost:3000/api
+SECRET_KEY=your-secret-key-here
+
+# .env.local (DO NOT COMMIT)
+DATABASE_URL=postgresql://user:pass@prod.db.com:5432/prod_db
+SECRET_KEY=actual-production-secret
+```
+```typescript
+// ✅ GOOD: Type-safe env validation
+import { z } from 'zod';
+
+const envSchema = z.object({
+  DATABASE_URL: z.string().url(),
+  NEXT_PUBLIC_API_URL: z.string().url(),
+  SECRET_KEY: z.string().min(32),
+});
+
+export const env = envSchema.parse(process.env);
+```
+
+### Docker Best Practices
+```dockerfile
+# ✅ GOOD: Multi-stage build, minimal image
+FROM node:20-alpine AS base
+
+FROM base AS deps
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+
+FROM base AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+FROM base AS runner
+WORKDIR /app
+ENV NODE_ENV production
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
+COPY --from=deps --chown=nextjs:nodejs /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
+
+USER nextjs
+EXPOSE 3000
+CMD ["npm", "start"]
+```
+
+---
+
+## 📝 Documentation Standards
+
+### Code Comments
+```typescript
+// ✅ GOOD: Explain WHY, not WHAT
+/**
+ * Debounces the search query to avoid excessive API calls.
+ *
+ * We use 300ms delay because:
+ * - Average typing speed is ~40 WPM (150ms per character)
+ * - Balances UX responsiveness vs. API load
+ *
+ * @see https://ux.stackexchange.com/questions/12345/debounce-timing
+ */
+const debouncedSearch = useDebounce(searchQuery, 300);
+
+// ❌ BAD: Stating the obvious
+// This is a button that increments count by 1
+const button = <button onClick={() => setCount(count + 1)}>Click</button>;
+```
+
+### JSDoc for Public APIs
+```typescript
+/**
+ * Fetches paginated user data with optional filtering.
+ *
+ * @param params - Query parameters
+ * @param params.page - Page number (1-indexed)
+ * @param params.limit - Items per page (max 100)
+ * @param params.search - Optional search query
+ * @returns Paginated user list
+ * @throws {ApiError} When server returns non-2xx status
+ *
+ * @example
+ * ```ts
+ * const users = await fetchUsers({ page: 1, limit: 20, search: 'john' });
+ * console.log(users.data); // [{ id: '1', name: 'John Doe' }, ...]
+ * ```
+ */
+export async function fetchUsers(params: FetchUsersParams): Promise<PaginatedResponse<User>> {
+  // Implementation
+}
+```
+
+---
+
+## 🚨 Common Pitfalls to Avoid
+
+### React Anti-Patterns
+```typescript
+// ❌ BAD: Mutating state directly
+const [items, setItems] = useState([1, 2, 3]);
+items.push(4); // ❌ Direct mutation
+setItems(items); // Won't trigger re-render
+
+// ✅ GOOD: Immutable update
+setItems([...items, 4]);
+
+// ❌ BAD: Derived state (unnecessary)
+const [users, setUsers] = useState([]);
+const [userCount, setUserCount] = useState(0);
+
+useEffect(() => {
+  setUserCount(users.length); // ❌ Redundant
+}, [users]);
+
+// ✅ GOOD: Calculate on render
+const userCount = users.length;
+
+// ❌ BAD: Effect with missing dependencies
+useEffect(() => {
+  fetchData(userId); // ❌ Missing 'userId' in deps
+}, []);
+
+// ✅ GOOD: Complete dependency array
+useEffect(() => {
+  fetchData(userId);
+}, [userId]);
+```
+
+### TypeScript Anti-Patterns
+```typescript
+// ❌ BAD: Type assertion without validation
+const user = JSON.parse(localStorage.getItem('user')!) as User;
+
+// ✅ GOOD: Runtime validation with Zod
+import { z } from 'zod';
+
+const UserSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  email: z.string().email(),
+});
+
+const rawUser = localStorage.getItem('user');
+if (!rawUser) throw new Error('No user found');
+
+const user = UserSchema.parse(JSON.parse(rawUser));
+```
+
+### Performance Anti-Patterns
+```typescript
+// ❌ BAD: Creating functions in render
+function BadComponent() {
+  return items.map(item => (
+    <Item
+      key={item.id}
+      onClick={() => handleClick(item.id)} // ❌ New function every render
+    />
+  ));
+}
+
+// ✅ GOOD: Memoized callback
+function GoodComponent() {
+  const handleClick = useCallback((id: string) => {
+    // Handle click
+  }, []);
+
+  return items.map(item => (
+    <Item key={item.id} onClick={() => handleClick(item.id)} />
+  ));
+}
+```
+
+---
+
+## 🎯 Decision Trees
+
+### When to Use Each State Management Solution?
+```
+Is it server data? → React Query
+    ↓ NO
+Is it form data? → React Hook Form
+    ↓ NO
+Is it shared across 2-3 components? → Lift state up + props
+    ↓ NO
+Is it deeply nested (5+ levels)? → Context API
+    ↓ NO
+Is it complex (many actions/reducers)? → Zustand or Redux Toolkit
+    ↓ NO
+Use local useState
+```
+
+### When to Use Server vs. Client Components?
+```
+Needs interactivity (onClick, onChange)? → Client
+    ↓ NO
+Uses React hooks (useState, useEffect)? → Client
+    ↓ NO
+Uses browser APIs (localStorage, window)? → Client
+    ↓ NO
+Needs SEO or fast initial load? → Server
+    ↓ YES
+Default to Server Component
+```
+
+---
+
+## 📋 Pre-Commit Checklist
+
+Before committing code, ensure:
+- [ ] `npm run type-check` passes (no TypeScript errors)
+- [ ] `npm run lint` passes (no ESLint warnings)
+- [ ] `npm run format` applied (Prettier)
+- [ ] `npm test` passes (all tests green)
+- [ ] No `console.log` in production code (use proper logging)
+- [ ] No `TODO` or `FIXME` comments (create issues instead)
+- [ ] Environment variables not committed
+- [ ] Bundle size checked (use `@next/bundle-analyzer`)
+- [ ] Accessibility tested (keyboard navigation, screen reader)
+- [ ] Performance profiled (React DevTools Profiler)
+
+---
+
+## 🔗 Quick Reference
+
+### Essential Commands
+```bash
+# Development
+npm run dev          # Start dev server
+npm run build        # Production build
+npm run start        # Start production server
+
+# Code Quality
+npm run type-check   # TypeScript validation
+npm run lint         # ESLint check
+npm run lint:fix     # Auto-fix linting issues
+npm run format       # Prettier format
+
+# Testing
+npm test             # Run all tests
+npm run test:watch   # Watch mode
+npm run test:coverage # Coverage report
+npm run test:e2e     # End-to-end tests
+
+# Analysis
+npm run analyze      # Bundle analyzer
+npm run lighthouse   # Performance audit
+```
+
+### Key Libraries
+- **UI**: shadcn/ui, Radix UI, Headless UI
+- **Styling**: Tailwind CSS, clsx, tailwind-merge
+- **State**: Zustand, Redux Toolkit, Jotai
+- **Server State**: TanStack Query (React Query), SWR
+- **Forms**: React Hook Form + Zod
+- **Testing**: Jest, React Testing Library, Playwright
+- **Utils**: date-fns, lodash-es, nanoid
+
+---
+
+## 🚀 When Stuck
+
+### Debugging Strategy
+1. **Read the error message carefully** - TypeScript errors are usually clear
+2. **Check the docs** - Official docs are the source of truth
+3. **Isolate the problem** - Create minimal reproduction
+4. **Use debugging tools**:
+   - React DevTools (component tree, props, state)
+   - Network tab (API calls, timing)
+   - Performance tab (profiling)
+   - Lighthouse (overall health)
+5. **Search strategically**:
+   - GitHub issues of the library
+   - Stack Overflow with specific error message
+   - Official Discord/Slack communities
+
+### Asking for Help Template
+```markdown
+**Problem**: [One sentence describing the issue]
+
+**Expected**: [What should happen]
+
+**Actual**: [What actually happens]
+
+**Code**: [Minimal reproduction]
+
+**Environment**:
+- Next.js version: 14.2.0
+- React version: 18.3.1
+- Browser: Chrome 120
+
+**What I tried**:
+- [Attempt 1]
+- [Attempt 2]
+```
+
+---
+
+## 💡 Final Notes
+
+- **Consistency > Perfection**: Follow established patterns in the codebase
+- **Readability > Cleverness**: Simple code > clever one-liners
+- **User Experience > Developer Convenience**: Ship what users need
+- **Iterate**: Start simple, optimize when necessary (measure first!)
+- **Document decisions**: Leave breadcrumbs for future developers (including yourself)
+
+**Remember**: These rules are guidelines, not laws. Use your judgment and adapt to the specific context of your project. When in doubt, prioritize user experience and code maintainability.
+
+---
+
+*Last updated: 2025-01-20*
+*Version: 1.0*
