@@ -14,3 +14,8 @@ shadcn, tailwind 등과 동일하지만 UI요소를 다양한 스타일의 예�
    이 세개의 페이지의 컬러, UI를 분석해서 Core Design System Principles MD를 만들어주고,
    주요 컬러값에 대한 COLOR json 파일을 별도로 만들어줘 코더 디자인 원칙에 이 컬러값을 include 해야해
 
+
+3. 첨부한 이미지를 참고해서 컬러값들을 추출해서 JSON으로 만들어줘. 이 값을 가지고 DESIGN SYSTEM md를 만들어서 AI 에이전트를 통해서 사이트를 만들거야.
+디자인과 타이포그라피, 레이아웃, 사이즈나 간격을 JSON 정보에 포함해서 작성해줘
+
+4. https://linear.app/ 과 첨부한 이미지들을 참고해서 다크 테마로 만들수 있는 컬러값들을 추출해서 STYLE_GUIDE.md 를 만들어줘.
