@@ -74,6 +74,7 @@ API Layer: REST + GraphQL hybrid
 Build: Vite / Turbopack
 Rendering: SSR + CSR hybrid (React Server Components)
 UI Layout Specification: Left Pane: Nested Tree Menu (Category, Component List, Templates), Right Pane: Content Area (Live Preview, Code Blocks, Controls)
+Each UI element must variously display input forms, HTML elements, and CSS properties, and must mandatorily include @UI.md @COLOR.json @DESIGN.md
 ```
 
 ### 2. Component Structure
@@ -169,6 +170,16 @@ Related Files @COLOR.json
 ### 11. DESIGN & COLOR 
 @DESIGN.md 
 @COLOR.json
+@UI.md
+
+
+### 12. Reference Site 
+- https://mobbin.com
+- https://collectui.com
+- https://chakra-ui.com/
+- https://velog.io/@oneook/프론트엔드-개발자라면-반드시-알아두어야-할-32가지의-UI-요소-번역
+- https://tailwindcss.com
+- https://ui.shadcn.com
 
 ---
 
