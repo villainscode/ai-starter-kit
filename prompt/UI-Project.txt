@@ -12,7 +12,8 @@ shadcn, tailwind 등과 동일하지만 UI요소를 다양한 스타일의 예�
    https://www.tossinvest.com/news
 
    이 세개의 페이지의 컬러, UI를 분석해서 Core Design System Principles MD를 만들어주고,
-   주요 컬러값에 대한 COLOR json 파일을 별도로 만들어줘 코더 디자인 원칙에 이 컬러값을 include 해야해
+   주요 컬러값에 대한 COLOR.json 파일을 별도로 만들어줘 디자인 원칙에 이 컬러값을 include 해야해. Codex, Claude Code 같은 CLI의 AGENTS.md에 Code Design System Principles 와  참조 사이트, COLOR.json이
+   포함될 예정이니 이 상황에 맞게 파일을 만들어줘
 
 
 3. 첨부한 이미지를 참고해서 컬러값들을 추출해서 JSON으로 만들어줘. 이 값을 가지고 DESIGN SYSTEM md를 만들어서 AI 에이전트를 통해서 사이트를 만들거야.
