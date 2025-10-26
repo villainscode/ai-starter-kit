@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4-1 Cursor 활용</title>
+  <link rel="stylesheet" href="./qnote-export.css">
+</head>
+<body>
+  <div class="container">
+<html><head></head><body><h2 id="heading-1761309366907-721"><span style="color: rgb(45, 55, 72); font-size: 24px; font-weight: 600; background-color: var(--bg-color); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif;">1. 커서의 기본 세팅</span></h2><p><br></p><p><span style="background-color: var(--bg-color); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: calc(16px + var(--font-size-adjustment, 0px));">세팅 기본 화면</span></p><ul data-lite-editor-bullet="true" class="bullet-depth-1" data-depth="1" data-bullet-style="disc" style="list-style-type: disc !important; padding-left: 1.5em !important;">
+<li>계정 및 팀</li>
+<li>에디터 세팅</li>
+<li>키보드 단축키</li>
+<li>Privacy Mode 등을 세팅할 수 있음</li></ul><p><br></p><div class="image-wrapper" id="img-1761142175678" data-selectable="true" style="display: inline-block; position: relative; margin: 0px; max-width: 95%; overflow: hidden; box-sizing: border-box;"><img src="file/image/2025/10/22/774e7c87-c16e-468a-bc88-6a11448022e3_1761142175676.png" style="width: 100%; height: auto; display: block;"></div><p><br></p><h3 id="heading-1761309378636-802"><ol data-lite-editor-number="true" class="number-depth-1" data-depth="1" data-number-style="decimal" style="list-style-type: decimal !important; padding-left: 1.5em !important;"><li>커서 편집창</li></ol></h3><p>좌측은 프로젝트 탐색 폴더이고, 우측은 AI 채팅 패널이다.</p><p>가운데가 파일 편집 영역이고 하단이 터미널 영역이므로 가급적 기본 패널 레이아웃으로 사용하길 바란다.</p><p><br></p><div class="image-wrapper" id="img-1761142371677" data-selectable="true" style="display: inline-block; position: relative; margin: 0px; max-width: 95%; overflow: hidden; box-sizing: border-box; opacity: 1;"><img src="file/image/2025/10/22/205a54ea-4fd2-413b-a625-2be0cb131b49_1761142365424.png" style="width: 100%; height: auto; display: block;"></div><p><br></p><p><br></p><p><br></p><p><br></p><h3 id="heading-1761309382761-371">2. 예제 만들어보기&nbsp;</h3><p>보통 웹 혹은 앱 기반으로 표준 환경들이 있고, 그에 따른 디렉토리 구조들이 존재하므로 관련된 내용을 Gemini, Claude 등을 활용해서 먼저 습득해두면 도움이 된다.</p><div class="image-wrapper" id="img-1761142350327" data-selectable="true" style="display: inline-block; position: relative; margin: 0px; max-width: 95%; overflow: hidden; box-sizing: border-box;"><img src="file/image/2025/10/22/2763dc21-ced5-490d-968c-7400cf1ad9da_1761142350323.png" style="width: 100%; height: auto; display: block;"></div><p><br></p><p><span style="font-size: calc(16px + var(--font-size-adjustment, 0px)); background-color: var(--bg-color); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif;">채팅창에 Agent 모드로 놓고 이와 같은 프롬프트를 입력했다고 했을때 실행되는 영상 샘플을 살펴보기 바란다. (<a href="https://youtu.be/SxYkYh9l_68" target="_blank" rel="noopener noreferrer">https://youtu.be/SxYkYh9l_68</a>)</span></p><p><br></p><div class="video-wrapper youtube-preview" data-platform="youtube" data-video-id="SxYkYh9l_68" data-youtube-url="https://youtu.be/SxYkYh9l_68" style="width: 910.997px; height: 678.999px; position: relative; margin: 10px 0px; border-radius: 8px; overflow: hidden; cursor: pointer; box-sizing: border-box; max-width: 100%; background: rgb(0, 0, 0);"><img src="https://img.youtube.com/vi/SxYkYh9l_68/maxresdefault.jpg" alt="YouTube 동영상" style="width: 100%; height: 100%; object-fit: cover;"><div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; opacity: 0.9; transition: opacity 0.3s;">
+        
+      </div></div><p><br></p><p><br></p><p><span style="font-size: calc(16px + var(--font-size-adjustment, 0px)); background-color: var(--bg-color); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif;">이 결과로 다음과 같은 페이지가 나온는 것을 확인할 수 있다.</span></p><div class="image-wrapper" id="img-1761142963712" data-selectable="true" style="display: inline-block; position: relative; margin: 0px; max-width: 95%; overflow: hidden; box-sizing: border-box; width: 1056.5px; height: 1016.74px;"><img src="file/image/2025/10/22/208ad880-bea0-4320-be1b-fcf5294093d7_1761142963706.png" style="width: 100%; height: auto; display: block;"></div><p><br></p><p>간단한 기능이므로 문제없이 동작하게 될 것이다.</p><p>실습 과제</p><ul>
+<li>현재 완성된 웹 계산기에서 수정해야 할 기능은 무엇인가?</li>
+<li>어떻게 수정할 것인가?</li>
+<li>추가하고 싶은 기능이 있다면 어떤식으로 추가해야 할까?</li>
+<li>수정 소스의 히스토리는 어떻게 관리해야 하나?</li>
+</ul><h2>2. 주요 기능</h2><h3 id="heading-1761309393077-507"><ol><li>Agent 모드 (Cmd + I - Composer)</li></ol></h3><p>특징</p><ul>
+<li><strong>다중 파일 동시 편집</strong>&nbsp;가능</li>
+<li><strong>자율적인 코드 생성</strong>&nbsp;및 수정</li>
+<li><strong>프로젝트 구조 이해</strong>&nbsp;기반 작업</li>
+</ul><p>사용법</p><ul class="bullet-depth-1" data-lite-editor-bullet="true" data-depth="1" data-bullet-style="disc" data-original-paragraphs="[&quot;<span style=\&quot;background-color: var(--bg-color); font-family: -apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, Arial, sans-serif; font-size: calc(16px + var(--font-size-adjustment, 0px));\&quot;>Cmd + I 로 Composer 열기</span>&quot;]" style="list-style-type: disc !important; padding-left: 1.5em !important;"><li><span style="background-color: var(--bg-color); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: calc(16px + var(--font-size-adjustment, 0px));">Cmd + I 로 Composer 열기</span></li></ul><ul data-lite-editor-bullet="true" data-depth="1" data-bullet-style="disc" data-original-paragraphs="[&quot;<span style=\&quot;font-size: calc(16px + var(--font-size-adjustment, 0px)); background-color: var(--bg-color); font-family: -apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, Arial, sans-serif;\&quot;>Cmd + I 로 Composer 열기</span>&quot;,&quot;<span style=\&quot;font-size: calc(16px + var(--font-size-adjustment, 0px)); background-color: var(--bg-color); font-family: -apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, Arial, sans-serif;\&quot;>원하는 작업을 자연어로 설명</span>&quot;,&quot;<span style=\&quot;font-size: calc(16px + var(--font-size-adjustment, 0px)); background-color: var(--bg-color); font-family: -apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, Arial, sans-serif;\&quot;>AI가 자동으로 여러 파일을 분석하고 수정</span>&quot;,&quot;변경사항 검토 후 Apply 또는 Reject&quot;]" class="bullet-depth-1" style="list-style-type: disc !important; padding-left: 1.5em !important;"><li><span style="font-size: calc(16px + var(--font-size-adjustment, 0px)); background-color: var(--bg-color); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif;">원하는 작업을 자연어로 설명</span></li><li><span style="font-size: calc(16px + var(--font-size-adjustment, 0px)); background-color: var(--bg-color); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif;">AI가 자동으로 여러 파일을 분석하고 수정</span></li><li>&nbsp;변경사항 검토 후 Apply 또는 Rejec</li></ul><p><br></p><p>실사용 예시</p><p><span style="font-size: calc(16px + var(--font-size-adjustment, 0px)); background-color: var(--bg-color); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif;">"노트앱에 다크모드 기능을 추가해줘."</span></p><ul class="bullet-depth-1" data-lite-editor-bullet="true" data-depth="1" data-bullet-style="disc" data-original-paragraphs="[&quot;테마 전환 버튼 추가&amp;nbsp;- CSS 변수로 색상 관리&amp;nbsp;- 사용자 설정 저장&amp;nbsp;- 모든 컴포넌트에 적용&quot;,&quot;AI가 자동으로 여러 파일을 수정:&amp;nbsp;- theme.css 생성&quot;,&quot;components/ThemeToggle.jsx 생성&quot;,&quot;App.jsx 수정&amp;nbsp;- localStorage 로직 추가&quot;,&quot;토큰 사용량:&amp;nbsp;높음&amp;nbsp;(5000-15000 토큰)&quot;,&quot;전체 프로젝트 컨텍스트 분석&quot;,&quot;다중 파일 동시 처리&quot;,&quot;복잡한 로직 생성&quot;]" style="list-style-type: disc !important; padding-left: 1.5em !important;"><li>테마 전환 버튼 추가&nbsp;- CSS 변수로 색상 관리&nbsp;- 사용자 설정 저장&nbsp;- 모든 컴포넌트에 적용</li><li>AI가 자동으로 여러 파일을 수정:&nbsp;- theme.css 생성</li><li>components/ThemeToggle.jsx 생성</li><li>App.jsx 수정&nbsp;- localStorage 로직 추가</li><li>토큰 사용량:&nbsp;높음&nbsp;(5000-15000 토큰)</li><li>전체 프로젝트 컨텍스트 분석</li><li>다중 파일 동시 처리</li><li>복잡한 로직 생성</li></ul><p><br></p><h3 id="heading-1761309406480-552">2.&nbsp;<span style="font-size: calc(16px + var(--font-size-adjustment, 0px)); background-color: var(--bg-color); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Ask 모드 (Cmd + L - Chat)</span></h3><p><span style="background-color: var(--bg-color); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: calc(16px + var(--font-size-adjustment, 0px));">특징</span></p><ul data-lite-editor-bullet="true" class="bullet-depth-1" data-depth="1" data-bullet-style="disc" style="list-style-type: disc !important; padding-left: 1.5em !important;">
+<li><strong>질문-답변</strong>&nbsp;중심의 대화형 인터페이스</li>
+<li><strong>코드 설명, 디버깅, 리뷰</strong>&nbsp;전문</li>
+<li><strong>참조 파일</strong>&nbsp;자동 선택</li>
+</ul><p>사용법</p><ul class="bullet-depth-1" data-lite-editor-bullet="true" data-depth="1" data-bullet-style="disc" data-original-paragraphs="[&quot;Cmd + L로 채팅창 열기&quot;,&quot;@ 기호로 특정 파일 참조&quot;,&quot;질문이나 요청 입력&quot;,&quot;AI가 답변과 함께 코드 예시 제공&quot;]" style="list-style-type: disc !important; padding-left: 1.5em !important;"><li>Cmd + L로 채팅창 열기</li><li>@ 기호로 특정 파일 참조</li><li>질문이나 요청 입력</li><li>AI가 답변과 함께 코드 예시 제공</li></ul><p><br></p><p>실사용 예시</p><p>"@src/components/NoteEditor.jsx 이 컴포넌트에서&nbsp;메모리 누수가 발생할 수 있는 부분이 있을까?"</p><p>→ AI 응답:&nbsp;"네, 몇 가지 잠재적 메모리 누수 지점이 있습니다:</p><ul data-lite-editor-bullet="true" class="bullet-depth-1" data-depth="1" data-bullet-style="disc" style="list-style-type: disc !important; padding-left: 1.5em !important;">
+<li>1. useEffect에서 이벤트 리스너 정리 안 됨</li>
+<li>2. setTimeout 정리 안 됨</li>
+<li>3. WebSocket 연결 정리 안 됨</li>
+<li>4. [구체적인 수정 코드 제시]"</li></ul><ul data-lite-editor-bullet="true" class="bullet-depth-1" data-depth="1" data-bullet-style="disc" style="list-style-type: disc !important; padding-left: 1.5em !important;">
+<li>토큰 사용량:&nbsp;<strong>중간</strong>&nbsp;(1000-5000 토큰)</li>
+<li>참조된 파일들만 컨텍스트로 사용</li>
+<li>질문에 따라 사용량 차이</li></ul><p><br></p><p><br></p><h3 id="heading-1761309413157-367">3.&nbsp;<span style="font-size: calc(16px + var(--font-size-adjustment, 0px)); background-color: var(--bg-color); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Manual 모드 (Cmd + K - Quick Edit)<br><br></span></h3><p><br></p><p>특징</p><ul>
+<li><strong>선택된 코드</strong>만 집중 편집</li>
+<li><strong>빠른 수정</strong>&nbsp;및 개선</li>
+<li><strong>최소한의 컨텍스트</strong>&nbsp;사용</li>
+</ul><p>사용법</p><ul class="bullet-depth-1" data-lite-editor-bullet="true" data-depth="1" data-bullet-style="disc" data-original-paragraphs="[&quot;수정하고 싶은 코드 선택&quot;,&quot;Cmd + K 입력&quot;,&quot;구체적인 수정 요청 입력&quot;,&quot;AI가 해당 부분만 수정&quot;]" style="list-style-type: disc !important; padding-left: 1.5em !important;"><li>수정하고 싶은 코드 선택</li><li>Cmd + K 입력</li><li>구체적인 수정 요청 입력</li><li>AI가 해당 부분만 수정</li></ul><div><pre><code class="language-typescript"><span class="token comment" style="color: #6a737d">// 선택된 코드 - "이 코드에 에러 처리를 추가해줘"</span>
+<span class="token keyword" style="color: #d73a49">function</span> <span class="token function" style="color: #6f42c1">saveNote</span><span class="token punctuation" style="color: #24292e">(</span><span class="token variable" style="color: #e36209">note</span><span class="token punctuation" style="color: #24292e">)</span> <span class="token punctuation" style="color: #24292e">{</span>
+    <span class="token variable" style="color: #e36209">localStorage</span><span class="token punctuation" style="color: #24292e">.</span><span class="token function" style="color: #6f42c1">setItem</span><span class="token punctuation" style="color: #24292e">(</span><span class="token string" style="color: #032f62">'note'</span><span class="token punctuation" style="color: #24292e">,</span> <span class="token class" style="color: #6f42c1">JSON</span><span class="token punctuation" style="color: #24292e">.</span><span class="token function" style="color: #6f42c1">stringify</span><span class="token punctuation" style="color: #24292e">(</span><span class="token variable" style="color: #e36209">note</span><span class="token punctuation" style="color: #24292e">)</span><span class="token punctuation" style="color: #24292e">)</span><span class="token punctuation" style="color: #24292e">;</span>
+<span class="token punctuation" style="color: #24292e">}</span>
+
+<span class="token comment" style="color: #6a737d">// AI 결과</span>
+<span class="token keyword" style="color: #d73a49">function</span> <span class="token function" style="color: #6f42c1">saveNote</span><span class="token punctuation" style="color: #24292e">(</span><span class="token variable" style="color: #e36209">note</span><span class="token punctuation" style="color: #24292e">)</span> <span class="token punctuation" style="color: #24292e">{</span>
+    <span class="token keyword" style="color: #d73a49">try</span> <span class="token punctuation" style="color: #24292e">{</span>
+        <span class="token keyword" style="color: #d73a49">if</span> <span class="token punctuation" style="color: #24292e">(</span><span class="token operator" style="color: #d73a49">!</span><span class="token variable" style="color: #e36209">note</span> <span class="token operator" style="color: #d73a49">||</span> <span class="token keyword" style="color: #d73a49">typeof</span> <span class="token variable" style="color: #e36209">note</span> <span class="token operator" style="color: #d73a49">!==</span> <span class="token string" style="color: #032f62">'object'</span><span class="token punctuation" style="color: #24292e">)</span> <span class="token punctuation" style="color: #24292e">{</span>
+            <span class="token keyword" style="color: #d73a49">throw</span> <span class="token keyword" style="color: #d73a49">new</span> <span class="token function" style="color: #6f42c1">Error</span><span class="token punctuation" style="color: #24292e">(</span><span class="token string" style="color: #032f62">'Invalid note object'</span><span class="token punctuation" style="color: #24292e">)</span><span class="token punctuation" style="color: #24292e">;</span>
+        <span class="token punctuation" style="color: #24292e">}</span>
+        <span class="token variable" style="color: #e36209">localStorage</span><span class="token punctuation" style="color: #24292e">.</span><span class="token function" style="color: #6f42c1">setItem</span><span class="token punctuation" style="color: #24292e">(</span><span class="token string" style="color: #032f62">'note'</span><span class="token punctuation" style="color: #24292e">,</span> <span class="token class" style="color: #6f42c1">JSON</span><span class="token punctuation" style="color: #24292e">.</span><span class="token function" style="color: #6f42c1">stringify</span><span class="token punctuation" style="color: #24292e">(</span><span class="token variable" style="color: #e36209">note</span><span class="token punctuation" style="color: #24292e">)</span><span class="token punctuation" style="color: #24292e">)</span><span class="token punctuation" style="color: #24292e">;</span>
+        <span class="token keyword" style="color: #d73a49">return</span> <span class="token boolean" style="color: #005cc5">true</span><span class="token punctuation" style="color: #24292e">;</span>
+    <span class="token punctuation" style="color: #24292e">}</span> <span class="token keyword" style="color: #d73a49">catch</span> <span class="token punctuation" style="color: #24292e">(</span><span class="token variable" style="color: #e36209">error</span><span class="token punctuation" style="color: #24292e">)</span> <span class="token punctuation" style="color: #24292e">{</span>
+        <span class="token variable" style="color: #e36209">console</span><span class="token punctuation" style="color: #24292e">.</span><span class="token function" style="color: #6f42c1">error</span><span class="token punctuation" style="color: #24292e">(</span><span class="token string" style="color: #032f62">'Failed to save note:'</span><span class="token punctuation" style="color: #24292e">,</span> <span class="token variable" style="color: #e36209">error</span><span class="token punctuation" style="color: #24292e">)</span><span class="token punctuation" style="color: #24292e">;</span>
+        <span class="token keyword" style="color: #d73a49">return</span> <span class="token boolean" style="color: #005cc5">false</span><span class="token punctuation" style="color: #24292e">;</span>
+    <span class="token punctuation" style="color: #24292e">}</span>
+<span class="token punctuation" style="color: #24292e">}</span></code></pre><p><br></p></div><p><span style="color: rgb(45, 55, 72); font-size: 24px; font-weight: 600; background-color: var(--bg-color); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif;">3. 개발 및 디버깅</span></p><p>문제가 되는 부분의 코드나 고치고 싶은 부분이 코드를 개발자 도구 (F12)를 열어 Element Inspect 를 통해 영역을 지정해서 수정하거나 기능을 추가할 수 있다.</p><div class="image-wrapper" id="img-1761143491197" data-selectable="true" style="display: inline-block; position: relative; margin: 0px; max-width: 95%; overflow: hidden; box-sizing: border-box;"><img src="file/image/2025/10/22/1407af30-b617-4041-a54b-f546f0f0dc86_1761143491177.png" style="width: 100%; height: auto; display: block;"></div><p><br></p><p><span style="background-color: var(--bg-color); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: calc(16px + var(--font-size-adjustment, 0px));">해당 엘리먼트를 직접 찾아서 Add to Chat을 통해 해당 라인을 채팅 모드에 추가할 수 있으며 Quick Edit로도 수정이 가능하다.</span></p><div class="image-wrapper" id="img-1761143512814" data-selectable="true" style="display: inline-block; position: relative; margin: 0px; max-width: 95%; overflow: hidden; box-sizing: border-box;"><img src="file/image/2025/10/22/b7ddc268-2ea4-4858-9cd7-87378ac335d6_1761143512810.png" style="width: 100%; height: auto; display: block;"></div><p><span style="background-color: var(--bg-color); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: calc(16px + var(--font-size-adjustment, 0px));">여기서는 계산기 웹 화면에서 연산자 입력시 화면에 표시가 안되고 계산을 하는 불편함이 있으므로 연산자도 클릭시 화면에 노출하도록 해당 코드에 수정할 스펙 프롬프트를 입력해주고 수정을 진행해보도록 한다.</span></p><p><br></p><p>만약 코드 변경이 지지부진하거나 제대로 안되는 느낌이 들면 에이전트 모델을 상위 모델로 변경해야 한다.</p><div class="image-wrapper" id="img-1761143593757" data-selectable="true" style="display: inline-block; position: relative; margin: 0px; max-width: 95%; overflow: hidden; box-sizing: border-box;"><img src="file/image/2025/10/22/9ff5d3f3-11e2-4f72-923b-e0791346d4bc_1761143593755.png" style="width: 100%; height: auto; display: block;"></div><p><br></p><p>빠른 속도로 작업하길 원한다면 Auto 모드를 사용해서 간단한 버그들은 처리할 수 있다.&nbsp;</p><div class="image-wrapper" id="img-1761143586921" data-selectable="true" style="display: inline-block; position: relative; margin: 0px; max-width: 95%; overflow: hidden; box-sizing: border-box; opacity: 1;"><img src="file/image/2025/10/22/d95e56ca-a449-437c-ab8d-e2e03688174c_1761143575048.png" style="width: 100%; height: auto; display: block;"></div><p><br></p><p>현재 커서에서 제일 상위 모델은 claude-4.5-sonnet 모델이고, MAX 모드로 선택한 경우 더 원할한 기능을 수행할 수 있으나 Token의 소모가 심하다는 단점이 있다.</p><p>따라서 일반적인 작업이라면 Auto 모드로 해도 충분히 수정이 가능할 것이고, 속도 또한 만족할만큼 빠르므로 참고해서 사용해보도록 한다.</p><p>또, 가끔 에이전트가 엉뚱한 작업을 하거나 전혀 의도하지 않은 작업들을 수행한다고 느껴질때가 있는데 이럴 경우 대화 내역을 다 리셋하고, 코드 역시 롤백하고 초기부터 다시 작업하는게 유리하다.</p><p><br></p><h2>4. 단축키</h2><p><br></p><h3 id="heading-1761309466028-425"><p>기본 AI&nbsp; 기능&nbsp;</p></h3><table>
+<thead>
+<tr>
+<th><code>Cmd + K</code></th>
+<th><strong>Quick Edit</strong></th>
+<th>선택한 코드를 AI로 수정</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Cmd + L</code></td>
+<td><strong>Chat</strong></td>
+<td>AI 채팅창 열기</td>
+</tr>
+<tr>
+<td><code>Cmd + I</code></td>
+<td><strong>Composer</strong></td>
+<td>다중 파일 편집 모드</td>
+</tr>
+<tr>
+<td><code>Cmd + Shift + L</code></td>
+<td><strong>새 채팅</strong></td>
+<td>새로운 채팅 세션 시작</td>
+</tr>
+<tr>
+<td><code>Cmd + /</code></td>
+<td><strong>인라인 제안</strong></td>
+<td>현재 위치에서 AI 제안 받기</td></tr></tbody></table><p><br></p><h3 id="heading-1761309519752-229">코드 편집 및 생성&nbsp;</h3><p><br></p><table>
+<thead>
+<tr>
+<th><code>Tab</code></th>
+<th><strong>제안 수락</strong></th>
+<th>AI 자동완성 제안 수락</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Esc</code></td>
+<td><strong>제안 거부</strong></td>
+<td>AI 제안 취소</td>
+</tr>
+<tr>
+<td><code>Cmd + →</code></td>
+<td><strong>부분 수락</strong></td>
+<td>제안의 일부만 수락</td>
+</tr>
+<tr>
+<td><code>Option + ]</code></td>
+<td><strong>다음 제안</strong></td>
+<td>여러 제안 중 다음 것 보기</td>
+</tr>
+<tr>
+<td><code>Option + [</code></td>
+<td><strong>이전 제안</strong></td>
+<td>여러 제안 중 이전 것 보기</td></tr></tbody></table><p><br></p><h3 id="heading-1761309524677-85">탐색 및 검색&nbsp;</h3><table>
+<thead>
+<tr>
+<th><code>Cmd + P</code></th>
+<th><strong>파일 검색</strong></th>
+<th>프로젝트 내 파일 빠른 검색</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Cmd + Shift + F</code></td>
+<td><strong>전체 검색</strong></td>
+<td>프로젝트 전체에서 텍스트 검색</td>
+</tr>
+<tr>
+<td><code>Cmd + G</code></td>
+<td><strong>다음 찾기</strong></td>
+<td>검색 결과 다음으로 이동</td>
+</tr>
+<tr>
+<td><code>Cmd + Shift + G</code></td>
+<td><strong>이전 찾기</strong></td>
+<td>검색 결과 이전으로 이동</td></tr></tbody></table><p><br></p><h3 id="heading-1761309527825-965">코드베이스 기능&nbsp;</h3><table>
+<thead>
+<tr>
+<th><code>Cmd + Click</code></th>
+<th><strong>정의로 이동</strong></th>
+<th>함수/변수 정의 위치로 이동</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Option + Click</code></td>
+<td><strong>빠른 정보</strong></td>
+<td>요소에 대한 빠른 정보 표시</td>
+</tr>
+<tr>
+<td><code>Cmd + Shift + O</code></td>
+<td><strong>심볼 검색</strong></td>
+<td>현재 파일의 함수/클래스 검색</td>
+</tr>
+</tbody>
+</table><h2>5. Cursor Rules 세팅</h2><p>대규모 프로젝트가 아니더라도 반드시 개발 환경에 대한 rule을 세팅하는 것을 추천한다.</p><p>룰은 커서 세팅 화면에서 Rules &amp; Memories 에서 설정할수 있고 프로젝트 루트 폴더 하위에&nbsp;.cursor/rules에 작성해서 적용할 수 있다.</p><p>각 기술셋에 대한 기본적인 Rule 세팅은 다음의 링크를 참고하기 바란다.</p><p><a href="https://github.com/PatrickJS/awesome-cursorrules?tab=readme-ov-file">https://github.com/PatrickJS/awesome-cursorrules?tab=readme-ov-file</a></p><div class="image-wrapper" id="img-1761143687868" data-selectable="true" style="display: inline-block; position: relative; margin: 0px; max-width: 95%; overflow: hidden; box-sizing: border-box;"><img src="file/image/2025/10/22/b7bc748f-478d-4d11-a76a-7ef563ef51a6_1761143687866.png" style="width: 100%; height: auto; display: block;"></div><p><br></p><p><span style="background-color: var(--bg-color); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: calc(16px + var(--font-size-adjustment, 0px));">프로젝트 규칙을 사용하여 다음을 수행할 수 있다.</span></p><ul>
+<li>코드베이스에 대한 도메인별 지식을 인코딩</li>
+<li>프로젝트별 워크플로 또는 템플릿 자동화</li>
+<li>스타일 또는 아키텍처 결정 표준화</li>
+</ul><p>.MDC 파일로 작성되어야 하며 다른 룰을 참고에 포함하여 트리거 할 수 있다.</p><pre>---
+description: RPC Service boilerplate
+globs:
+alwaysApply: false
+---
+
+- Use our internal RPC pattern when defining services
+- Always use snake_case for service names.
+
+@service-template.ts
+</pre><p>service-template.ts 규칙을 포함하여 추가로 컨텍스트가 유지된다.</p><p>또한 프로젝트 전체 티렉토리에 중첩해서 규칙을 적용할 수 있다.</p><pre>project-root/
+  .cursor/rules/        # Project-wide rules
+  backend/
+    server/
+      .cursor/rules/    # Backend-specific rules
+  frontend/
+    .cursor/rules/      # Frontend-specific rules
+</pre><p>Setting에 추가하기 번거롭다면 검색을 통해 다양한 Rule 파일들을 복사해서 적용해도 무방하고, Cursor 안에서&nbsp;/Generate Cursor Rules 명령어를 통해서 적용해도 상관없다.</p><div class="image-wrapper" id="img-1761143775654" data-selectable="true" style="display: inline-block; position: relative; margin: 0px; max-width: 95%; overflow: hidden; box-sizing: border-box;"><img src="file/image/2025/10/22/99147513-335c-4cd6-bddc-a978dd6a9d01_1761143775650.png" style="width: 100%; height: auto; display: block;"></div><p><br></p><p><br></p><p>다음은 Rule 샘플 파일이다.</p><pre>You are an expert AI programming assistant that primarily focuses on producing clear, readable HTML, Tailwind CSS and vanilla JavaScript code.
+
+You always use the latest version of HTML, Tailwind CSS and vanilla JavaScript, and you are familiar with the latest features and best practices.
+
+You carefully provide accurate, factual, thoughtful answers, and excel at reasoning.
+
+- Follow the user's requirements carefully &amp; to the letter.
+- Confirm, then write code!
+- Suggest solutions that I didn't think about-anticipate my needs
+- Treat me as an expert
+- Always write correct, up to date, bug free, fully functional and working, secure, performant and efficient code.
+- Focus on readability over being performant.
+- Fully implement all requested functionality.
+- Leave NO todo's, placeholders or missing pieces.
+- Be concise. Minimize any other prose.
+- Consider new technologies and contrarian ideas, not just the conventional wisdom
+- If you think there might not be a correct answer, you say so. If you do not know the answer, say so instead of guessing.
+- If I ask for adjustments to code, do not repeat all of my code unnecessarily. Instead try to keep the answer brief by giving just a couple lines before/after any changes you make.
+- All responses will be in Korean.
+
+Prompt Generation Rules:
+
+- Analyze the component requirements thoroughly
+- Include specific DaisyUI component suggestions
+- Specify desired Tailwind CSS classes for styling
+- Mention any required TypeScript types or interfaces
+- Include instructions for responsive design
+- Suggest appropriate Next.js features if applicable
+- Specify any necessary state management or hooks
+- Include accessibility considerations
+- Mention any required icons or assets
+- Suggest error handling and loading states
+- Include instructions for animations or transitions if needed
+- Specify any required API integrations or data fetching
+- Mention performance optimization techniques if applicable
+- Include instructions for testing the component
+- Suggest documentation requirements for the component
+
+General Component Creation Guidelines:
+
+- Prioritize reusability and modularity
+- Ensure consistent naming conventions
+- Follow React best practices and patterns
+- Implement proper prop validation
+- Consider internationalization requirements
+- Optimize for SEO when applicable
+- Ensure compatibility with different browsers and devices
+
+General Rules:
+
+- Enable strict TypeScript (strict: true in tsconfig.json)
+- Avoid 'any', prefer 'unknown' with runtime checks
+- Explicitly type function inputs and outputs
+- Use advanced TypeScript features (type guards, mapped types, conditional types)
+- Organize project structure: components, pages, hooks, utils, styles, contracts, services
+- Separate concerns: presentational components, business logic, side effects
+- Use Biome for code formatting and linting
+- Configure Biome as a pre-commit hook
+
+Next.js Rules:
+
+- Use dynamic routes with bracket notation ([id].tsx)
+- Validate and sanitize route parameters
+- Prefer flat, descriptive routes
+- Use getServerSideProps for dynamic data, getStaticProps/getStaticPaths for static
+- Implement Incremental Static Regeneration (ISR) where appropriate
+- Use next/image for optimized images
+- Configure image layout, priority, sizes, and srcSet attributes
+
+TypeScript Rules:
+
+- Enable all strict mode options in tsconfig.json
+- Explicitly type all variables, parameters, and return values
+- Use utility types, mapped types, and conditional types
+- Prefer 'interface' for extendable object shapes
+- Use 'type' for unions, intersections, and primitive compositions
+- Document complex types with JSDoc
+- Avoid ambiguous union types, use discriminated unions when necessary
+
+TailwindCSS and DaisyUI Rules:
+
+- Use TailwindCSS utility classes for styling
+- Avoid custom CSS unless absolutely necessary
+- Maintain consistent order of utility classes
+- Use Tailwind's responsive variants for adaptive designs
+- Leverage DaisyUI components for rapid development
+- Customize DaisyUI components only when necessary
+- Define and use design tokens in tailwind.config.js
+
+Starknet React Rules:
+
+- Centralize blockchain connection management
+- Implement automatic reconnection and error handling
+- Use React hooks for transaction status management
+- Provide clear UI feedback for blockchain interactions
+- Implement comprehensive error handling for blockchain operations
+
+Cairo Rules:
+
+- Design modular and maintainable contract structures
+- Optimize for gas efficiency
+- Minimize state changes and storage access
+- Document all contracts and functions thoroughly
+- Explain complex logic and implementation choices
+
+Development Process:
+
+- Conduct thorough code reviews via Pull Requests
+- Include clear PR descriptions with context and screenshots
+- Implement comprehensive automated testing (unit, integration, e2e)
+- Prioritize meaningful tests over high coverage numbers
+- Use Conventional Commits for commit messages (feat:, fix:, docs:, chore:)
+- Make small, incremental commits for easier review and debugging
+
+Biome Rules:
+
+- Use Biome for code formatting and linting
+- Configure Biome as a pre-commit hook
+- Follow Biome's recommended rules
+- Customize Biome configuration in biome.json as needed
+- Ensure consistent code style across the project
+- Run Biome checks before committing changes
+- Address all Biome warnings and errors promptly
+- Use Biome's organize imports feature to maintain clean import statements
+- Leverage Biome's advanced linting capabilities for TypeScript
+- Integrate Biome into the CI/CD pipeline for automated checks
+- Keep Biome updated to the latest stable version
+- Use Biome's ignore patterns to exclude specific files or directories when necessary
+
+</pre><p><br></p><h2 id="heading-1761301452037-322">6. Best Practice 와 예시</h2><p>좋은 규칙은 집중적이고, 실행 가능하며, 범위가 명확해야 한다. 아래와 같은 명확한 룰을 작성해야 한다.</p><ul data-lite-editor-bullet="true" class="bullet-depth-1" data-depth="1" data-bullet-style="disc" style="list-style-type: disc !important; padding-left: 1.5em !important;">
+<li>규칙을 500줄 이하로 유지하세요</li>
+<li>큰 규칙을 여러 개의 구성 가능한 규칙으로 분할</li>
+<li>구체적인 예나 참조 파일을 제공하세요</li>
+<li>모호한 지침은 피하세요. 명확한 내부 문서와 같은 규칙을 작성하세요.</li>
+<li>채팅에서 프롬프트를 반복할 때 규칙을 재사용하세요.</li></ul><p><br></p><p><br></p><p>Tip.</p><p>일반적인 LLM 에도 역할을 부여하고 설명상의 규칙을 넣듯이 개발하고자 하는 플랫폼과 언어, 프로젝트에 맞도록 룰을 부여하는게 코드생성에서 훨씬 좋은 결과를 낼 수 있다.</p><p>가급적 프로젝트를 열고 작업할 때&nbsp;Cursor Settings → Indexing &amp; Docs&nbsp;메뉴를 통해 코드베이스를 인덱싱하고 rule 파일을 다시 한번 Cursor에 인식시키는 습관을 들이도록 한다.</p><p>중요 정보를 다루는 파일이 있다면&nbsp;.cursorignore 파일에 추가해서 엑세스를 제어할 수 있다. (.cursorindexignore, .gitignore 등 비슷한 역할을 한다)</p><p>가급적 유명한 Repository와 Boilerplate 를 참고해서 시작하는것이 좋다.</p><p><br></p><p><br></p><h2 id="heading-1761309354452-88">7. 업데이트 및 변경 사항&nbsp;</h2><h3 id="heading-1761309547384-908">계획 모드 추가&nbsp;</h3><p>- TaskMaster MCP를 이용해서 작은 단위로 Task를&nbsp; 쪼개 작업 단위의 Plan을 작성 한 뒤에 차례대로 수행하는 형태의 플랜 모드(계획 모드)가 추가 되었고, 이 모드를 통해 더 세밀하고 많은 작업을 수행할 수 있게 되었음&nbsp;</p><p><br></p><p><br></p><div class="image-wrapper" id="img-1761309559384" data-selectable="true" style="display: inline-block; position: relative; margin: 0px; max-width: 95%; overflow: hidden; box-sizing: border-box; width: 899.001px; height: 424.987px;"><img src="file/image/2025/10/24/0c8de530-b1a2-43a2-87cc-afaa037a2dac_1761309559378.png" style="width: 100%; height: auto; display: block;"></div><h3 id="heading-1761309584295-269">브라우저 컨트롤&nbsp;</h3><p><br></p><p><br></p><h3 id="heading-1761309935875-916">에이전트 채팅 자동 완성&nbsp;</h3><p>tab 키를 Chat 창에서 활용할 수 있도록 자동 완성 제안 및 파일 첨부 기능 추가&nbsp;</p><p><br></p><h3 id="heading-1761309657712-221">Hook (베타)</h3><p>Hook을 사용해&nbsp; 에이전트의 특정 작업 전,후 지시사항을 추가해줄 수 있음&nbsp;</p><p><br></p><p><br></p><h3 id="heading-1761309707345-619">팀 룰 세팅 가능&nbsp;</h3><p>팀 라이센스 일 경우 팀 모드 (팀 글로벌 규칙) 로 팀의 룰셋을 사용할 수 있음&nbsp;</p><p><br></p><h3 id="heading-1761309930762-355">딥링크를 통한 프롬프트 공유 가능 (베타)</h3><p>재사용 해야 하는 프롬프트에 대해서 공유가 가능한 팁 링크를 생성하여 공유할 수 있음</p><p><br></p><h3 id="heading-1761309927401-515">Chat 화면에서 이미지 파일 추가 가능&nbsp;</h3><p>에이전트 작업 공간에서 이미지 파일을 읽고 작업을 수행할 수 있음&nbsp;</p><p><br></p><p><br></p><p>참고 사이트&nbsp;</p><ul>
+<li><a href="https://github.com/PatrickJS/awesome-cursorrules">https://github.com/PatrickJS/awesome-cursorrules</a></li>
+<li><a href="https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite">https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite</a></li>
+<li><a href="https://vercel.com/templates/next.js/next-js-saas-starter">https://vercel.com/templates/next.js/next-js-saas-starter</a></li>
+<li><a href="https://github.com/vercel/next-forge">https://github.com/vercel/next-forge</a></li>
+</ul><p><br></p><p>과제</p><ul>
+<li><a href="https://stitch.withgoogle.com/">https://stitch.withgoogle.com/</a>&nbsp;Stitch 를 이용한 UI 개발</li>
+<li><a href="https://github.com/stagewise-io/stagewise">https://github.com/stagewise-io/stagewise</a>&nbsp;stagewise 를 이용한 UI 개발</li></ul></body></html>
+  </div>
+</body>
+</html>

@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4-2 Claude Code 활용</title>
+  <link rel="stylesheet" href="./qnote-export.css">
+</head>
+<body>
+  <div class="container">
+<html><head></head><body><h1 id="heading-1761471649565-235">Claude Code&nbsp;</h1><p><br>명령 모드</p><p>일회성 명령의 경우 다음과 같이 입력한다.</p><pre>&gt; claude “이 프로젝트는 TypeScript, NextJS, Electron, HTML, CSS를 이용한 데스크탑 웹 앱이야. DB작업을 위한 API 호출이 있고 DB 연동 정보는 별도의 
+파일로 관리할 예정이야. 프로젝트의 기본 라이브러리, 디렉토리, 기본 메시지를 출력하는 첫 페이지를 구성해줘”
+</pre><p>대화형 모드의 경우 긴 작업을 위해 여러번의 대화 형태로 이어지는 프로젝트를 할 경우 적합하다.</p><pre>&gt; claude # 대화 모드 시작 
+
+&gt; 이 프로젝트는 TypeScript, NextJS, Electron, HTML, CSS를 이용한 데스크탑 웹 앱이야. 기본적인 프로젝트 구조를 세팅해주고 README.nd 파일을 만들어줘 
+</pre><p>대화모드에서는 연속된 형태로 후속 작업들을 입력할 수 있다.</p><pre># Trouble Shooting 
+계정 로그인 중에 다음과 같은 에러 메시지를 보게 된다면 개발 툴을 종료하고 다시 시도하면 해결된다.
+OAuth error: Port 54545 is already in use. Please ensure no other applications are using this port.
+
+# 명령 화면에서 빠져나오기 
+작업에 대한 지시를 한 뒤 빠져나오기 위해서는 Ctrl + C 키를 누르면 된다. 
+</pre><p>프롬프트 명령어</p><p>터미널의 input 프롬프트에 / 를 입력하면 사용가능한 명령어리스트가 출력되며 각 설명은 다음과 같다.</p><div class="image-wrapper" id="img-1761208418637" data-selectable="true" style="display: inline-block; position: relative; margin: 0px; max-width: 95%; overflow: hidden; box-sizing: border-box; width: 1102.3px; height: 571.305px;"><img src="file/image/2025/10/23/ac6e32dd-ab2e-4a4e-87e3-09f4da3bc32c_1761208418635.png" style="width: 100%; height: auto; display: block;"></div><p><br></p><table id="22b83171-6d2c-807c-bd10-fb3074c07e04" class="simple-table"><tbody><tr id="22b83171-6d2c-809f-9aea-c5d04257a3b5"><td id="Isb]" class="">/add-dir </td><td id="_gP=" class="">/add-dir [디렉토리_경로]</td><td id="Jt\=" class=""># 현재 디렉토리 추가 <br>/add-dir .  <br><br># 특정 경로 추가 <br>/add-dir /home/user/my-note-app</td></tr><tr id="22b83171-6d2c-803e-aaa7-c01a1d98f29c"><td id="Isb]" class="">/bug</td><td id="_gP=" class="">/bug [버그_설명]</td><td id="Jt\=" class="">/bug 재현 단계: 1) TypeScript 프로젝트 열기 2) /add-dir . 실행 3) "모든 .ts 파일 분석해줘" 요청 4) 에러 발생: "Cannot read property 'length' of undefined"</td></tr><tr id="22b83171-6d2c-80bc-95f5-da0a1977fc1f"><td id="Isb]" class="">/clear</td><td id="_gP=" class=""></td><td id="Jt\=" class="">대화 기록 삭제 (메모리 확보, 새작업) - 컨텍스트 삭제 </td></tr><tr id="22b83171-6d2c-8089-99fe-f05324d7f87b"><td id="Isb]" class="">/compact</td><td id="_gP=" class="">/compact [요약_지시사항]</td><td id="Jt\=" class=""># 대화 기록을 삭제 하되, 중요한 정보를 요약해서 컨텍스트에 보관 <br>/compact 리팩토링 전후 비교와 주요 변경사항만 요약해줘</td></tr><tr id="22b83171-6d2c-8043-8ca6-d1349bc2eba9"><td id="Isb]" class="">/config (theme)</td><td id="_gP=" class=""></td><td id="Jt\=" class=""># 테마, API 설정, 동작 방식 등을 조정<br>/config<br>- Model selection (Claude 3.5 Sonnet, etc.)<br>- Temperature settings<br>- Max tokens<br>- Response format preferences<br><br><em># 동작 설정</em><br>- Auto-save conversations<br>- Code highlighting preferences<br>- File watching settings<br>- Hook configurations</td></tr><tr id="22b83171-6d2c-80eb-94f7-cf2411252728"><td id="Isb]" class="">/cost</td><td id="_gP=" class=""></td><td id="Jt\=" class="">현재 세션에서 사용한 토큰 수, 예상 비용, 세션 시간을 확인</td></tr><tr id="22b83171-6d2c-80d3-8323-e52021f2bd7c"><td id="Isb]" class="">/doctor</td><td id="_gP=" class=""></td><td id="Jt\=" class="">Claude Code 설치가 올바르게 되어있는지, 모든 의존성이 충족되는지 검사</td></tr><tr id="22b83171-6d2c-80be-9506-e482b695cb58"><td id="Isb]" class="">/exit</td><td id="_gP=" class=""></td><td id="Jt\=" class="">종료</td></tr><tr id="22b83171-6d2c-8066-bbf8-d338383c238a"><td id="Isb]" class="">/help</td><td id="_gP=" class=""></td><td id="Jt\=" class="">도움말 </td></tr><tr id="22b83171-6d2c-8070-b79c-c56511fa813c"><td id="Isb]" class="">/hooks</td><td id="_gP=" class=""></td><td id="Jt\=" class=""># 특정 이벤트 발생 시 자동으로 실행될 훅(Hook)을 설정하고 관리<br><br><em># 자동 백업 훅</em><br>/hooks add on_response "./backup-session.sh"<br><br><em># 비용 모니터링 훅  </em><br>/hooks add on_request "echo $(date): Request sent &gt;&gt; usage.log"<br><br><em># 에러 알림 훅</em><br>/hooks add on_error "slack-notify 'Claude Code에서 에러가 발생했습니다'"<br><br><em># 자동 커밋 훅 (주의해서 사용)</em><br>/hooks add on_file_change "git add . &amp;&amp; git commit -m 'Claude Code: $(date)'"<br>통</td></tr><tr id="22d83171-6d2c-80ea-be5d-dc746408f0b0"><td id="Isb]" class="">/resume</td><td id="_gP=" class=""></td><td id="Jt\=" class="">이전 맥락 불러오기 : 세션 종료시 이전 내용을 기억하지 못하기 때문에  resume으로 세션 기록을 조회할 수구 있다. <br>claude --r </td></tr><tr id="22d83171-6d2c-805c-a837-eae4589a63b9"><td id="Isb]" class="">기타 명령어 </td><td id="_gP=" class="">claude  --continue<br>claude -c  </td><td id="Jt\=" class="">이전 작업 내역을 이어서 진행할 수 있다.</td></tr></tbody></table><p><br></p><p><br></p><p>보통 작업을 시작할 때 위의 명령어들을 토대로 루틴한 프로세스를 설정하여 사용할 수 있다.</p><pre># 1. 세션 비용 확인
+&gt; /cost
+
+# 2. 중요 내용 요약 보존
+&gt; /compact 오늘 완성한 기능과 내일 할 작업을 요약해줘
+
+# 3. 안전 종료
+&gt; /exit
+</pre><p>작업을 진행하다가 중단할 경우 이전 대화를 다시 시작할 수 있다.</p><p><br></p><p>Claude Code는 이전 대화를 재개하기 위한 두 가지 옵션을 제공</p><ul data-lite-editor-bullet="true" class="bullet-depth-1" data-depth="1" data-bullet-style="disc" style="list-style-type: disc !important; padding-left: 1.5em !important;">
+<li>
+<p>-continue</p>
+<p>가장 최근의 대화를 자동으로 계속하려고 할 경우</p>
+</li>
+<li>
+<p>-resume</p>
+<p>이전 작업 내역 불러오기</p>
+</li>
+</ul><h2><br>명령어 활용</h2><p><br></p><h3>claude "작업 설명"&nbsp;- 일회성 작업 실행</h3><p>특정 작업을 빠르게 처리하고 싶을 때 사용한다.</p><pre># 간단한 파일 생성
+claude "package.json에 lodash 의존성을 추가해줘"
+# 빠른 코드 생성
+claude "Express 서버의 기본 구조를 만들어줘"
+# 버그 수정
+claude "이 함수에서 null 체크가 없어서 에러가 날 수 있어. 안전하게 수정해줘"
+
+</pre><p>이 방식은 요청을 처리한 후 자동으로 종료된다. 하지만 추가 작업이 필요하다면 인터랙티브 모드로 계속 진행할 수 있다.</p><p>언제 사용하나?</p><ul>
+<li>명확하고 간단한 작업일 때</li>
+<li>빠른 수정이나 생성이 필요할 때</li>
+<li>스크립트나 자동화에서 사용할 때</li>
+</ul><h3>claude -p "질문"&nbsp;- 빠른 질의응답</h3><p>코드를 수정하지 않고 질문만 하고 싶을 때 사용한다.</p><pre># 코드 분석
+claude -p "이 함수가 어떤 일을 하는지 설명해줘"
+# 기술 질문
+claude -p "React hooks와 class component의 차이점이 뭐야?"# 에러 해석claude -p "이 에러 메시지가 무슨 의미인지 알려줘: TypeError: Cannot read property 'map' of undefined"
+
+</pre><p>이 모드는 질문에 답변한 후 바로 종료된다. 파일을 수정하지 않고 정보만 얻고 싶을 때 유용하다.</p><p>언제 사용하나?</p><ul>
+<li>코드나 에러에 대한 설명이 필요할 때</li>
+<li>기술적 조언을 구할 때</li>
+<li>빠른 정보 검색이 필요할 때</li>
+</ul><h3>claude -c&nbsp;- 최근 대화 이어가기</h3><p>가장 최근의 Claude Code 세션을 이어서 진행할 수 있다.</p><pre># 이전에 작업하던 내용을 계속 진행
+claude -c
+
+</pre><p>예를 들어, 어제 React 컴포넌트를 만들다가 중단했다면, 오늘&nbsp;claude -c로 실행해서 어제 대화를 이어갈 수 있습니다.</p><p>언제 사용하나?</p><ul>
+<li>이전 작업을 계속 진행할 때</li>
+<li>중단되었던 복잡한 개발 작업을 재개할 때</li>
+<li>컨텍스트를 유지하면서 작업하고 싶을 때</li>
+</ul><h3>claude -r&nbsp;- 이전 대화 재개하기</h3><p>특정 세션을 선택해서 재개할 수 있다.</p><pre># 세션 목록에서 선택
+claude -r
+
+</pre><p>실행하면 이전 세션들의 목록이 나타나고, 원하는 세션을 선택할 수 있다.</p><p>언제 사용하나?</p><ul>
+<li>여러 프로젝트를 병렬로 진행할 때</li>
+<li>특정 시점의 대화로 돌아가고 싶을 때</li>
+<li>과거의 작업 내용을 참조하고 싶을 때</li>
+</ul><p>대화를 즉시 이어서 하려면 claude --continue 를 통해서 할 수 있고 대화 내역을 조회하여 탐색하고 싶다면 claude --resume를 통해서 해결할 수 있다.</p><p>비대화형 모드에서 최근 대화를 계속하려면 claude --continue --print "테스트 다시 실행" 와 같이 실행할 수 있다.</p><p>정리하면 다음과 같다.</p><table>
+<thead>
+<tr>
+<th>claude</th>
+<th>대화형 모드 시작</th>
+<th>claude</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>claude "task"</td>
+<td>일회성 작업 실행</td>
+<td>claude "빌드 오류 수정"</td>
+</tr>
+<tr>
+<td>claude -p "query"</td>
+<td>일회성 쿼리 실행 후 종료</td>
+<td>claude -p "이 함수를 설명해주세요"</td>
+</tr>
+<tr>
+<td>claude -c</td>
+<td>가장 최근 대화 계속</td>
+<td>claude -c</td>
+</tr>
+<tr>
+<td>claude -r</td>
+<td>이전 대화 재개</td>
+<td>claude -r</td>
+</tr>
+<tr>
+<td>claude commit</td>
+<td>Git 커밋 생성</td>
+<td>claude commit</td>
+</tr>
+<tr>
+<td>/clear</td>
+<td>대화 기록 지우기</td>
+<td>&gt; /clear</td>
+</tr>
+<tr>
+<td>/help</td>
+<td>사용 가능한 명령어 표시</td>
+<td>&gt; /help</td>
+</tr>
+<tr>
+<td>exit&nbsp;또는 Ctrl+C</td>
+<td>Claude Code 종료</td>
+<td>&gt; exit</td>
+</tr>
+</tbody>
+</table><p>그밖에 CLI 명령어는 https://docs.anthropic.com/en/docs/claude-code/cli-reference 를 참고해보자.</p><p>MCP 연결</p><p>프로젝트 스코프 서버는 프로젝트 루트의 .mcp.json 파일에 저장하여 관리할 수 있다.</p><p>또한 사용자 스코프로 추가할 경우 프로젝트 모든 곳에서 사용가능 하다.</p><pre># 기본 문법 
+&gt; claude mcp add &lt;name&gt; &lt;command&gt; [args...]
+
+# 예시 
+&gt; claude mcp add my-server -e API_KEY=123 -- /path/to/server arg1 arg2
+</pre><p>예를들어 Playwright MCP를 추가하려면 다음과 같이 추가해줄 수 있다.</p><pre># 기본 연결 (현재 프로젝트에서만)
+&gt; claude mcp add playwright -- npx @executeautomation/playwright-mcp-server
+
+# 모든 프로젝트에서 사용하려면
+&gt; claude mcp add playwright -s user -- npx @executeautomation/playwright-mcp-server
+</pre><p><br></p><p><br></p><p><br></p><div class="image-wrapper" id="img-1761208536104" data-selectable="true" style="display: inline-block; position: relative; margin: 0px; max-width: 95%; overflow: hidden; box-sizing: border-box; width: 1437.3px; height: 408.367px;"><img src="file/image/2025/10/23/ff8550d8-baa2-46ce-bcb4-955779d9acaf_1761208536102.png" style="width: 100%; height: auto; display: block;"></div><p><br></p><p><br></p><p><br></p><p>추가하고 나면 다음과 같이 진행할것인지 확인하는 단계에서 1번을 선택한 뒤 엔터를 치면 된다.</p><pre>Do you want to proceed?
+│ ❯ 1. Yes
+│   2. Yes, and don't ask again for npm install commands in /Users/edell/Cursor-Project/subnote
+│   3. No, and tell Claude what to do differently (esc)  
+</pre><p>삭제 후 다시 추가하려면 다음과 같다.</p><pre>&gt; claude mcp remove playwright
+&gt; claude mcp add playwright -- npx @executeautomation/playwright-mcp-server
+</pre><p>또한 .mcp.json을 통해 공통으로 관리하는 형태로 공유할 수 있다.</p><pre>{
+  "mcpServers": {
+    "puppeteer": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@smithery-ai/puppeteer",
+        "--key",
+        "2f534282-f501-4b59-bf31-28d05031e6cc"
+      ]
+    },
+    "context7-mcp": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@upstash/context7-mcp",
+        "--key",
+        "2f534282-f501-4b59-bf31-28d05031e6cc"
+      ]
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "sequential-thinking",
+        "--key",
+        "2f534282-f501-4b59-bf31-28d05031e6cc"
+      ]
+    }
+  }
+}
+</pre><p>가장 일반적으로 사용가능한 Sequential Thinking을 설치해보자.  터미널에서 직접  시퀀셜 싱킹을 설치해본다. 사용자 계정에 따라 sudo 권한으로 설치해야 할 수도 있다.</p><pre># 글로벌 설치 
+npm install -g @modelcontextprotocol/server-sequential-thinking
+
+# 설치 확인
+npm list -g @modelcontextprotocol/server-sequential-thinking
+</pre><p>Sequential Thinking은 Claude가 복잡한 문제를 단계별로 사고하고 추론할 수 있도록 도와주는 MCP 서버이다.</p><p>또는 설정 파일에서 MCP 설정을 할 수 있다.</p><pre>// .claude-code/config.json 
+{
+  "mcpServers": {
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-sequential-thinking"],
+      "autoEnable": true,  // 자동 활성화
+      "contexts": ["architecture", "debugging", "refactoring"]
+    }
+  }
+}
+</pre><p>프로젝트 폴더 밑에 다음과 같이 작성해서 적용할 수 있다.</p><p>시퀀셜 싱킹 사용 예시</p><pre># 기존  프로젝트에 설정 추가
+cd project-app 
+
+mkdir -p .claude-code
+
+# Sequential Thinking 활성화 설정 생성
+echo '{
+  "mcpServers": {
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-sequential-thinking"], 
+      "enabled": true
+    }
+  }
+}' &gt; .claude-code/config.json
+</pre><pre># 일반적인 요청
+"로그인이 안 되는 버그를 찾아줘"
+
+# Sequential Thinking 적용
+"로그인 버그를 시퀀셜 싱킹을 이용해서 단계별로 분석해줘"
+
+응답 예시:
+🧠 1단계: 문제 정의
+- 증상: 로그인 버튼 클릭 후 무응답
+- 범위: 특정 브라우저에서만 발생
+
+🧠 2단계: 가능한 원인 분석  
+- 프론트엔드: JavaScript 에러
+- 네트워크: API 호출 실패
+- 백엔드: 인증 로직 오류
+
+🧠 3단계: 체계적 검증
+- 브라우저 개발자 도구 확인
+- 네트워크 탭에서 API 응답 확인
+- 서버 로그 분석
+
+🧠 4단계: 근본 원인 식별
+[구체적인 원인과 증거]
+
+🧠 5단계: 해결 방안 제시
+[단계별 수정 방법]
+</pre><p>혹은 다음과 같이 사용할 수 있다.</p><pre># Sequential Thinking 모드 활성화
+&gt; claude-code --mcp sequential-thinking "복잡한 문제를 단계별로 해결해줘"
+
+# 또는 대화 중에 활성화
+&gt; /mcp use sequential-thinking
+</pre><p>설치된 MCP 서버 목록을 확인하려면 다음과 같이 입력할 수 있다.</p><pre>&gt; claude mcp list
+
+⏺ MCP 서버 목록을 확인하겠습니다.
+
+⏺ Read(.cursor/mcp.json)
+  ⎿  Read 56 lines (ctrl+r to expand)
+
+⏺ MCP 서버 설정을 확인했습니다. 현재 설정된 MCP 서버는 다음과 같습니다:
+
+  1. puppeteer - 웹 자동화 도구
+  2. task-master-ai - AI 작업 관리 도구 (여러 AI API 키 설정됨)
+  3. context7-mcp - Upstash Context7 서버
+  4. sequential-thinking - 순차적 사고 도구
+
+  모든 서버는 Smithery CLI를 통해 실행되도록 설정되어 있습니다.
+</pre><p>위에서 설치한 Playwright를 설치한 뒤 이를 이용해서 특정 사이트의 스크린샷을 찍어달라고 하면 다음과 같이 동작하게 된다.</p><p><br></p><p><br></p><div class="image-wrapper" id="img-1761208586799" data-selectable="true" style="display: inline-block; position: relative; margin: 0px; max-width: 95%; overflow: hidden; box-sizing: border-box; width: 1433.3px; height: 843.344px;"><img src="file/image/2025/10/23/8d8a8974-ce27-450a-be7d-f30df6b30417_1761208586796.png" style="width: 100%; height: auto; display: block;"></div><p><br></p><p><span style="background-color: var(--bg-color); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: calc(16px + var(--font-size-adjustment, 0px));"></span><br></p><p><span style="background-color: var(--bg-color); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: calc(16px + var(--font-size-adjustment, 0px));">다음과 같이 Playwright를 이용한다면 브라우저 테스트와 관련된 작업들을 할 수 있다.</span></p><pre>&gt; "&lt;https://www.google.com&gt; 스크린샷 찍어줘"
+
+⏺ Google 홈페이지의 스크린샷을 찍어드리겠습니다.
+
+⏺ playwright:playwright_screenshot (MCP)(name: "google-homepage", savePng: true, storeBase64: true)
+  ⎿ &nbsp;Screenshot saved to: ../../Downloads/google-homepage-2025-07-09T08-24-37-393Z.png
+  ⎿ &nbsp;Screenshot also stored in memory with name: 'google-homepage'
+
+⏺ Google 홈페이지의 스크린샷을 성공적으로 찍었습니다! 스크린샷이 Downloads 폴더에 google-homepage-2025-07-09T08-24-37-393Z.png로 저장되었습니다.
+
+</pre><h2>Plan 모드와 auto-accept 모드</h2><p>Shift+Tab 버튼을 통해서 사용 모드를 변경할 수 있다.</p><p>예를들어 분석을 요청할때는 plan mode를 사용하고, 분석 결과를 자동으로 적용하고 싶다면  auto-accept 모드로 변경할 수 있다.</p><p>Plan mode
+작업 내역을 계획하고, 분석한 뒤 어떤 방식으로 개발해야할지 먼저 클로드 코드에게 의뢰를 하고 순차적인 리스트를 뽑아서 작업을 하고자 한다면 플랜 모드로 전환한 뒤 진행하면 된다.</p><p><br></p><div class="image-wrapper" id="img-1761208613832" data-selectable="true" style="display: inline-block; position: relative; margin: 0px; max-width: 95%; overflow: hidden; box-sizing: border-box; width: 1608.3px; height: 192.453px;"><img src="file/image/2025/10/23/3a79c030-0bb5-4914-9fb9-cb20069a04cf_1761208613828.png" style="width: 100%; height: auto; display: block;"></div><p><br></p><p><br></p><p>Auto-accept mode</p><p>만약 코드 작업에 들어가서 자동으로 수정하고 반영하기 원한다면 auto-accept 모드로 전환한 뒤 진행하면 된다.</p><div class="image-wrapper" id="img-1761208634605" data-selectable="true" style="display: inline-block; position: relative; margin: 0px; max-width: 95%; overflow: hidden; box-sizing: border-box;"><img src="file/image/2025/10/23/0e558819-4ebb-4230-9875-912ab2e3f7ed_1761208634603.png" style="width: 100%; height: auto; display: block;"></div><p><br></p><p>CLI를 사용하다보면 터미널 실행이나 질문의 명확도를 위해 권한을 요청하고 되물어보는 케이스에 대기(엔터 키를 누를때까지 대기하거나, 권한을 요청해서 사용자가 다음 단계를 선택해야만 실행하는 케이스)로 코딩 시간이 길어지기 때문에 bypass permissions 모드가 추가 되었다.&nbsp; &nbsp;</p><div class="image-wrapper" id="img-1761471824216" data-selectable="true" style="display: inline-block; position: relative; margin: 0px; max-width: 95%; overflow: hidden; box-sizing: border-box; width: 852px; height: 609.99px;"><img src="file/image/2025/10/26/dbdac8ce-3054-4cb6-bc5a-dfea383426f6_1761471824212.png" style="width: 100%; height: auto; display: block;"></div><p><br></p><p><br></p><p>기본 환경설정 만들기</p><p></p><p><br></p><div><pre><code class="language-markdown"><span class="token md-tag" style="color: #0969da; font-weight: bold;"># </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">CLAUDE.md</span>
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;"># </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">Using Gemini CLI for Large Codebase Analysis</span>
+
+When analyzing large codebases or multiple files that might exceed context limits, use the Gemini CLI with its massive
+context window. Use <span class="token md-string" style="color: #0550ae">`gemini -p`</span> to leverage Google Gemini's large context capacity.
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">## </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">File and Directory Inclusion Syntax</span>
+
+Use the <span class="token md-string" style="color: #0550ae">`@`</span> syntax to include files and directories in your Gemini prompts. The paths should be relative to WHERE you run the
+gemini command:
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">Examples:</span>
+
+<span class="token md-keyword" style="color: #24292f; font-weight: bold;">**Single file analysis:**</span>
+gemini -p "@src/main.py Explain this file's purpose and structure"
+
+Multiple files:
+gemini -p "@package.json @src/index.js Analyze the dependencies used in the code"
+
+Entire directory:
+gemini -p "@src/ Summarize the architecture of this codebase"
+
+Multiple directories:
+gemini -p "@src/ @tests/ Analyze test coverage for the source code"
+
+Current directory and subdirectories:
+gemini -p "@./ Give me an overview of this entire project"
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;"># </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">Or use --all_files flag:</span>
+gemini --all_files -p "Analyze the project structure and dependencies"
+
+Implementation Verification Examples
+
+Check if a feature is implemented:
+gemini -p "@src/ @lib/ Has dark mode been implemented in this codebase? Show me the relevant files and functions"
+
+Verify authentication implementation:
+gemini -p "@src/ @middleware/ Is JWT authentication implemented? List all auth-related endpoints and middleware"
+
+Check for specific patterns:
+gemini -p "@src/ Are there any React hooks that handle WebSocket connections? List them with file paths"
+
+Verify error handling:
+gemini -p "@src/ @api/ Is proper error handling implemented for all API endpoints? Show examples of try-catch blocks"
+
+Check for rate limiting:
+gemini -p "@backend/ @middleware/ Is rate limiting implemented for the API? Show the implementation details"
+
+Verify caching strategy:
+gemini -p "@src/ @lib/ @services/ Is Redis caching implemented? List all cache-related functions and their usage"
+
+Check for specific security measures:
+gemini -p "@src/ @api/ Are SQL injection protections implemented? Show how user inputs are sanitized"
+
+Verify test coverage for features:
+gemini -p "@src/payment/ @tests/ Is the payment processing module fully tested? List all test cases"
+
+When to Use Gemini CLI
+
+Use gemini -p when:
+<span class="token md-operator" style="color: #cf222e">- </span>Analyzing entire codebases or large directories
+<span class="token md-operator" style="color: #cf222e">- </span>Comparing multiple large files
+<span class="token md-operator" style="color: #cf222e">- </span>Need to understand project-wide patterns or architecture
+<span class="token md-operator" style="color: #cf222e">- </span>Current context window is insufficient for the task
+<span class="token md-operator" style="color: #cf222e">- </span>Working with files totaling more than 100KB
+<span class="token md-operator" style="color: #cf222e">- </span>Verifying if specific features, patterns, or security measures are implemented
+<span class="token md-operator" style="color: #cf222e">- </span>Checking for the presence of certain coding patterns across the entire codebase
+
+Important Notes
+
+<span class="token md-operator" style="color: #cf222e">- </span>Paths in @ syntax are relative to your current working directory when invoking gemini
+<span class="token md-operator" style="color: #cf222e">- </span>The CLI will include file contents directly in the context
+<span class="token md-operator" style="color: #cf222e">- </span>No need for --yolo flag for read-only analysis
+<span class="token md-operator" style="color: #cf222e">- </span>Gemini's context window can handle entire codebases that would overflow Claude's context
+<span class="token md-operator" style="color: #cf222e">- </span>When checking implementations, be specific about what you're looking for to get accurate results
+
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">## </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">🎯 QNote 프로젝트 개요</span>
+QNote는 Electron 기반의 크로스 플랫폼 노트 애플리케이션입니다. 리치 텍스트 편집 기능과 플러그인 기반 아키텍처를 제공하는 데스크톱 애플리케이션입니다.
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">기술 스택</span>
+<span class="token md-operator" style="color: #cf222e">- </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">**프론트엔드**</span>: React 18.3.1, Next.js 14.2.16
+<span class="token md-operator" style="color: #cf222e">- </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">**백엔드**</span>: Electron 33.4.11
+<span class="token md-operator" style="color: #cf222e">- </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">**데이터베이스**</span>: better-sqlite3 11.10.0
+<span class="token md-operator" style="color: #cf222e">- </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">**언어**</span>: TypeScript 5.7.2
+<span class="token md-operator" style="color: #cf222e">- </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">**스타일**</span>: CSS Modules, BEM 방법론
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">## </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">🚀 개발 명령어</span>
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">필수 개발 명령어</span>
+<span class="token md-string" style="color: #0550ae">```bash
+# 의존성 설치 (반드시 Node.js 22.15.0 사용)
+npm install
+
+# 개발 모드 실행 (Next.js 포트 13333 + Electron)
+npm run dev
+
+# 웹 브라우저에서만 테스트
+npm run dev:next  # http://localhost:13333
+
+# 프로덕션 빌드
+npm run build
+
+# 타입 체크
+npm run type-check
+
+# 린트 검사  
+npm run lint
+
+# 데이터베이스 초기화
+npm run setup-db
+
+# 데이터베이스 리셋
+npm run reset-db
+```</span>
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">테스트 명령어</span>
+<span class="token md-string" style="color: #0550ae">```bash
+# 단일 컴포넌트 테스트 (예시)
+node test/components/<span class="string-placeholder">[component-name]</span>.test.js
+
+# 플러그인 테스트
+node test/plugins/<span class="string-placeholder">[plugin-name]</span>.test.js
+```</span>
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">## </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">🏗️ 코드 아키텍처</span>
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">계층 구조 (Clean Architecture)</span>
+<span class="token md-string" style="color: #0550ae">```
+Presentation Layer (React Components)
+    ↓
+Domain Layer (Services, Business Logic)  
+    ↓
+Data Layer (Repositories, SQLite)
+```</span>
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">Electron 프로세스 분리</span>
+<span class="token md-operator" style="color: #cf222e">- </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">**메인 프로세스**</span> (<span class="token md-string" style="color: #0550ae">`src/main/`</span>): 애플리케이션 생명주기, 데이터베이스, IPC 핸들러
+<span class="token md-operator" style="color: #cf222e">- </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">**렌더러 프로세스**</span> (<span class="token md-string" style="color: #0550ae">`src/renderer/`</span>): React UI, 사용자 상호작용
+<span class="token md-operator" style="color: #cf222e">- </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">**IPC 통신**</span>: 타입 안전한 프로세스 간 통신 (<span class="token md-string" style="color: #0550ae">`src/shared/types/ipc.ts`</span>)
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">주요 디렉토리 구조</span>
+<span class="token md-string" style="color: #0550ae">```
+src/
+├── main/                 # Electron 메인 프로세스
+│   ├── controllers/      # IPC 핸들러 컨트롤러
+│   ├── services/         # 비즈니스 로직
+│   ├── repositories/     # 데이터 접근 계층
+│   └── database/         # SQLite 관리
+├── renderer/             # React 렌더러 프로세스
+│   └── components/       # UI 컴포넌트
+└── shared/               # 공유 코드
+    └── types/            # 타입 정의
+
+
+styles/
+├── common/               # 테마 무관 구조 스타일
+└── themes/               # 테마별 색상 스타일
+    ├── light/
+    └── dark/
+```</span>
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">에디터 플러그인 시스템</span>
+<span class="token md-operator" style="color: #cf222e">- </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">**주요 플러그인**</span>: table, image, link, format, list 등을 독립적인 TS로 만들고 각각의 독립 플러그인을 툴바에 추가, 삭제함으로서 기존 기능에 영향을 전혀 미칠수 없게 한다.
+
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">## </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">📝 코딩 규칙</span>
+<span class="token md-operator" style="color: #cf222e">- </span>표준 TS 및 Next.js 폴더 구조를 따른다.
+<span class="token md-operator" style="color: #cf222e">- </span>OOP 및 기능단위 컴포넌트 베이스로 개발 
+<span class="token md-operator" style="color: #cf222e">- </span>SOLID 원칙 및 Clean Architecture 적용
+<span class="token md-operator" style="color: #cf222e">- </span>DRY 원칙 - 중복 코드 제거 및 공통 함수화
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">🔔 모달 사용 규칙 (중요)</span>
+<span class="token md-operator" style="color: #cf222e">- </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">**절대 window.alert(), window.confirm() 사용 금지**</span>
+<span class="token md-operator" style="color: #cf222e">- </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">**절대 window.electronAPI.dialog.showAlert() 사용 금지**</span>
+<span class="token md-operator" style="color: #cf222e">- </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">**반드시 useModal() 훅 사용**</span>
+<span class="token md-string" style="color: #0550ae">```javascript
+// ✅ 올바른 사용
+import <span class="string-placeholder">{ useModal }</span> from '../../contexts/ModalContext';
+const modal = useModal();
+await modal.alert('메시지', <span class="string-placeholder">{ title: '제목', theme }</span>);
+
+// ❌ 절대 사용 금지
+window.alert('메시지');
+window.electronAPI.dialog.showAlert('메시지');
+```</span>
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">한국어 우선</span>
+<span class="token md-operator" style="color: #cf222e">- </span>모든 설명과 주석은 한국어로 작성
+<span class="token md-operator" style="color: #cf222e">- </span>Git 커밋 메시지 한국어 가능
+<span class="token md-operator" style="color: #cf222e">- </span>기술 용어나 라이브러리명은 영어 유지
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">TypeScript 엄격 모드</span>
+<span class="token md-operator" style="color: #cf222e">- </span>모든 함수와 변수에 타입 명시
+<span class="token md-operator" style="color: #cf222e">- </span>any 타입 사용 금지
+<span class="token md-operator" style="color: #cf222e">- </span>엄격한 null 체크
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">파일 수정 원칙  </span>
+<span class="token md-operator" style="color: #cf222e">- </span>새 파일 생성보다 기존 파일 수정 우선
+<span class="token md-operator" style="color: #cf222e">- </span>20줄 이하 수정 시 변경 부분만 표시
+<span class="token md-operator" style="color: #cf222e">- </span>수정 전 반드시 파일 읽기로 현재 상태 확인
+
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">## </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">🚨 절대 금지 사항 (CRITICAL - 반드시 준수)</span>
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">🔴 데이터베이스 관련 절대 금지 사항</span>
+<span class="token md-string" style="color: #0550ae">```bash
+# 데이터베이스 파괴적 명령어 - 절대 사용 금지 (사용자 명시적 요청 없이)
+npm run reset-db           # ❌ 절대 금지 - 모든 데이터 삭제
+npm run setup-db           # ⚠️ 사용자 허가 필요
+node scripts/reset-database.js  # ❌ 절대 금지
+
+# SQL 파괴적 명령어 - 절대 금지
+DROP TABLE                 # ❌ 절대 금지
+DROP DATABASE             # ❌ 절대 금지  
+DELETE FROM               # ⚠️ WHERE 절 없이 사용 금지
+TRUNCATE                  # ❌ 절대 금지
+ALTER TABLE DROP          # ⚠️ 사용자 허가 필요
+```</span>
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">🔴 데이터베이스 작업 필수 규칙</span>
+<span class="token md-operator" style="color: #cf222e">1. </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">**데이터 삭제/리셋 전 반드시 사용자에게 명시적 허가 요청**</span>
+<span class="token md-operator" style="color: #cf222e">2. </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">**백업 없이 데이터 삭제 절대 금지**</span>
+<span class="token md-operator" style="color: #cf222e">3. </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">**테스트 데이터가 있는 상태에서 리셋 금지**</span>
+<span class="token md-operator" style="color: #cf222e">4. </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">**SQL 수정으로 해결 가능한 문제는 데이터베이스 리셋 금지**</span>
+<span class="token md-operator" style="color: #cf222e">5. </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">**프로덕션 데이터베이스는 어떤 경우에도 자동 수정 금지**</span>
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">🔴 Git 위험 명령어 - 절대 사용 금지</span>
+<span class="token md-string" style="color: #0550ae">```bash
+git push --force
+git reset --hard
+git commit --no-verify
+```</span>
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">🔴 npm 위험 명령어</span>
+<span class="token md-string" style="color: #0550ae">```bash
+npm audit fix --force
+```</span>
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">라이브러리 버전 고정 (변경 금지)</span>
+<span class="token md-string" style="color: #0550ae">```json
+<span class="string-placeholder">{
+  "react": "^18.3.1",
+  "next": "^14.2.16",
+  "electron": "33.4.11",
+  "better-sqlite3": "11.10.0",
+  "typescript": "^5.7.2"
+}</span>
+```</span>
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">기본 기술 스택 이외의 라이브러리, 프레임워크, 언어 도입은 지양</span>
+<span class="token md-operator" style="color: #cf222e">- </span>어쩔수 없이 해야 할 경우 해야 하는 이유와 검토 의견을 낸 뒤 명시적으로 허가 요청할것
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">보안 규칙</span>
+<span class="token md-operator" style="color: #cf222e">- </span>eval() 사용 금지
+<span class="token md-operator" style="color: #cf222e">- </span>innerHTML 직접 사용 금지 (DOMPurify 사용)
+<span class="token md-operator" style="color: #cf222e">- </span>사용자 입력 반드시 검증
+<span class="token md-operator" style="color: #cf222e">- </span>API 키나 시크릿 절대 커밋 금지
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">## </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">🔄 개발 워크플로우</span>
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">기능 개발 프로세스</span>
+<span class="token md-operator" style="color: #cf222e">1. </span>요구사항 분석
+<span class="token md-operator" style="color: #cf222e">2. </span>기존 코드 검토 (유사 기능 찾기)
+<span class="token md-operator" style="color: #cf222e">3. </span>타입 정의 작성
+<span class="token md-operator" style="color: #cf222e">4. </span>기능 구현
+<span class="token md-operator" style="color: #cf222e">5. </span>타입 체크 실행 (<span class="token md-string" style="color: #0550ae">`npm run type-check`</span>)
+<span class="token md-operator" style="color: #cf222e">6. </span>린트 검사 (<span class="token md-string" style="color: #0550ae">`npm run lint`</span>)
+<span class="token md-operator" style="color: #cf222e">7. </span>테스트 실행
+<span class="token md-operator" style="color: #cf222e">8. </span>문서 업데이트
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">Git 커밋 컨벤션</span>
+<span class="token md-string" style="color: #0550ae">```
+<span class="string-placeholder">[feat]</span> : 새로운 기능 추가
+<span class="string-placeholder">[fix]</span> : 버그 수정
+<span class="string-placeholder">[debug]</span> : 디버깅 관련
+<span class="string-placeholder">[refactor]</span> : 코드 리팩토링
+<span class="string-placeholder">[docs]</span> : 문서 변경
+<span class="string-placeholder">[style]</span> : 코드 포맷팅
+<span class="string-placeholder">[test]</span> : 테스트 코드
+<span class="string-placeholder">[chore]</span> : 빌드 설정 변경
+```</span>
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">브랜치 전략</span>
+<span class="token md-operator" style="color: #cf222e">- </span><span class="token md-string" style="color: #0550ae">`main`</span>: 안정 버전
+<span class="token md-operator" style="color: #cf222e">- </span><span class="token md-string" style="color: #0550ae">`feature/날짜`</span>: 기능 개발 (예: feature/20250803)
+<span class="token md-operator" style="color: #cf222e">- </span><span class="token md-string" style="color: #0550ae">`hotfix/이슈명`</span>: 긴급 버그 수정
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">## </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">🐛 디버깅</span>
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">Electron 개발자 도구</span>
+<span class="token md-operator" style="color: #cf222e">- </span>앱 실행 후 <span class="token md-string" style="color: #0550ae">`Cmd+Option+I`</span> (macOS)
+<span class="token md-operator" style="color: #cf222e">- </span>메인 프로세스 로그: <span class="token md-string" style="color: #0550ae">`electron-log`</span> 사용
+<span class="token md-operator" style="color: #cf222e">- </span>렌더러 프로세스: 브라우저 개발자 도구
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">디버그 유틸</span>
+
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">## </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">📊 데이터 모델</span>
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">주요 엔티티</span>
+<span class="token md-operator" style="color: #cf222e">- </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">**Document**</span>: 노트 문서
+<span class="token md-operator" style="color: #cf222e">- </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">**Folder**</span>: 폴더 구조  
+<span class="token md-operator" style="color: #cf222e">- </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">**Tag**</span>: 태그 시스템
+<span class="token md-operator" style="color: #cf222e">- </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">**Attachment**</span>: 첨부파일
+<span class="token md-operator" style="color: #cf222e">- </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">**Category**</span>: 카테고리 분류
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">SQLite 스키마</span>
+<span class="token md-operator" style="color: #cf222e">- </span>위치: <span class="token md-string" style="color: #0550ae">`src/main/database/`</span>
+<span class="token md-operator" style="color: #cf222e">- </span>마이그레이션: <span class="token md-string" style="color: #0550ae">`src/main/database/migrations/`</span>
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">## </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">🎨 스타일 가이드</span>
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">CSS 구조</span>
+<span class="token md-operator" style="color: #cf222e">- </span>BEM 방법론 사용
+<span class="token md-operator" style="color: #cf222e">- </span>테마 시스템: light/dark 테마 지원
+<span class="token md-operator" style="color: #cf222e">- </span>구조(common)와 색상(themes) 분리
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">테마 전환</span>
+<span class="token md-operator" style="color: #cf222e">- </span>localStorage에 사용자 설정 저장
+<span class="token md-operator" style="color: #cf222e">- </span>헤더의 테마 버튼으로 실시간 전환
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">## </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">📋 AI Assistant 핵심 규칙</span>
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">🚨🚨🚨 최우선 규칙 - 데이터베이스 보호 🚨🚨🚨</span>
+<span class="token md-keyword" style="color: #24292f; font-weight: bold;">**절대 금지 (NEVER DO WITHOUT EXPLICIT USER PERMISSION):**</span>
+<span class="token md-operator" style="color: #cf222e">- </span><span class="token md-string" style="color: #0550ae">`npm run reset-db`</span> 실행 금지
+<span class="token md-operator" style="color: #cf222e">- </span><span class="token md-string" style="color: #0550ae">`DROP TABLE`</span>, <span class="token md-string" style="color: #0550ae">`DROP DATABASE`</span> 실행 금지
+<span class="token md-operator" style="color: #cf222e">- </span><span class="token md-string" style="color: #0550ae">`DELETE FROM`</span> (WHERE 절 없이) 실행 금지
+<span class="token md-operator" style="color: #cf222e">- </span>데이터베이스 파일 직접 삭제 금지
+<span class="token md-operator" style="color: #cf222e">- </span>테스트 데이터가 있는 상태에서 리셋 금지
+
+<span class="token md-keyword" style="color: #24292f; font-weight: bold;">**데이터베이스 문제 발생 시:**</span>
+<span class="token md-operator" style="color: #cf222e">1. </span>먼저 코드 수정으로 해결 시도
+<span class="token md-operator" style="color: #cf222e">2. </span>데이터베이스 구조 변경이 필요하면 사용자에게 상황 설명
+<span class="token md-operator" style="color: #cf222e">3. </span>데이터 손실 가능성이 있는 작업은 반드시 사용자 허가 요청
+<span class="token md-operator" style="color: #cf222e">4. </span>"데이터베이스를 리셋하시겠습니까? 모든 데이터가 삭제됩니다" 명시적 확인
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">🔄 기능 변경 시 필수 체크리스트</span>
+<span class="token md-keyword" style="color: #24292f; font-weight: bold;">**기존 기능 보존 원칙:**</span>
+<span class="token md-operator" style="color: #cf222e">1. </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">**변경 전 현재 상태 확인**</span>
+<span class="token md-operator" style="color: #cf222e">   - </span>해당 컴포넌트의 현재 기능 목록 작성
+<span class="token md-operator" style="color: #cf222e">   - </span>관련 UI 요소들의 표시 상태 확인
+<span class="token md-operator" style="color: #cf222e">   - </span>CSS 충돌 가능성 체크
+
+<span class="token md-operator" style="color: #cf222e">2. </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">**영향 범위 분석**</span>
+<span class="token md-operator" style="color: #cf222e">   - </span>변경할 컴포넌트를 사용하는 다른 컴포넌트 확인
+<span class="token md-operator" style="color: #cf222e">   - </span>CSS 클래스 중복 정의 확인 (common, themes, modules)
+<span class="token md-operator" style="color: #cf222e">   - </span>조건부 렌더링 로직 검토
+
+<span class="token md-operator" style="color: #cf222e">3. </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">**변경 후 검증**</span>
+<span class="token md-operator" style="color: #cf222e">   - </span>기존 기능들이 모두 정상 작동하는지 확인
+<span class="token md-operator" style="color: #cf222e">   - </span>특히 UI 요소 표시 여부 확인 (버튼, 메뉴 등)
+<span class="token md-operator" style="color: #cf222e">   - </span>collapsed/expanded 등 다양한 상태에서 테스트
+
+<span class="token md-operator" style="color: #cf222e">4. </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">**문제 발생 시 즉시 롤백**</span>
+<span class="token md-operator" style="color: #cf222e">   - </span>기존 기능이 사라지거나 동작하지 않으면 즉시 원복
+<span class="token md-operator" style="color: #cf222e">   - </span>원인 분석 후 다시 시도
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">🎯 핵심 UI 요소 보호 목록</span>
+다음 요소들은 항상 표시되어야 함:
+<span class="token md-operator" style="color: #cf222e">- </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">**사이드바**</span>: 폴더 생성 버튼, 노트 검색
+<span class="token md-operator" style="color: #cf222e">- </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">**에디터**</span>: 툴바 모든 버튼, 저장/취소 버튼
+<span class="token md-operator" style="color: #cf222e">- </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">**헤더**</span>: 테마 전환, 창 컨트롤 버튼
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">언어 및 커뮤니케이션</span>
+<span class="token md-operator" style="color: #cf222e">- </span>모든 설명은 한국어로 제공
+<span class="token md-operator" style="color: #cf222e">- </span>사용자를 전문가로 대우하고 불필요한 설명 최소화
+<span class="token md-operator" style="color: #cf222e">- </span>간결하고 명확한 답변 제공
+<span class="token md-operator" style="color: #cf222e">- </span>기술 용어는 원문 유지 가능
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">코드 작성 원칙</span>
+<span class="token md-operator" style="color: #cf222e">- </span>완전하고 버그 없는 코드 작성 (TODO, placeholder 없음)
+<span class="token md-operator" style="color: #cf222e">- </span>가독성 최우선 고려
+<span class="token md-operator" style="color: #cf222e">- </span>TypeScript 엄격 모드 준수
+<span class="token md-operator" style="color: #cf222e">- </span>SOLID 원칙 및 Clean Architecture 적용
+<span class="token md-operator" style="color: #cf222e">- </span>DRY 원칙 - 중복 코드 제거 및 공통 함수화
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">### </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">수정 작업 가이드라인</span>
+<span class="token md-operator" style="color: #cf222e">- </span>파일 수정 전 반드시 현재 상태 확인
+<span class="token md-operator" style="color: #cf222e">- </span>기존 기능 영향 여부 명시
+<span class="token md-operator" style="color: #cf222e">- </span>아이콘, 폰트 등 변경 시 사전 허가 필요
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">## </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">🔍 리팩토링 가이드</span>
+<span class="token md-operator" style="color: #cf222e">- </span>목표: 기능 변경 없이 코드 구조 개선
+<span class="token md-operator" style="color: #cf222e">- </span>모든 테스트 통과 확인 필수
+<span class="token md-operator" style="color: #cf222e">- </span>Dead code 자동 검출 및 제거
+<span class="token md-operator" style="color: #cf222e">- </span>500라인이 넘어가는 파일은 반드시 명시적으로 허가 요청 후 리팩토링 제안
+<span class="token md-operator" style="color: #cf222e">- </span>리팩토링 하기전에 GEMINI, SERENA MCP 등을 통해 Plan모드로 상세하게 분석하여 사이드이펙트가 없는지 검토 후 명시적 허가 요청 후 진행
+<span class="token md-operator" style="color: #cf222e">- </span>대규모 리팩토링의 경우 반드시 원본을 백업한 뒤 진행 
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">## </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">🐛 디버깅 접근법</span>
+<span class="token md-operator" style="color: #cf222e">- </span>원인과 해결책 설명 후 진행
+<span class="token md-operator" style="color: #cf222e">- </span>상세 로그 추가로 원인 분석
+<span class="token md-operator" style="color: #cf222e">- </span>로그는 develop 모드에서 출력하고 production 모드는 제외 되어야 함 
+
+<span class="token md-tag" style="color: #0969da; font-weight: bold;">## </span><span class="token md-keyword" style="color: #24292f; font-weight: bold;">📖 문서화 규칙</span>
+<span class="token md-operator" style="color: #cf222e">- </span>주요 컴포넌트: <span class="token md-string" style="color: #0550ae">`/docs/<span class="string-placeholder">[component]</span>.mdc`</span> 작성
+<span class="token md-operator" style="color: #cf222e">- </span>코드와 함께 문서 업데이트
+<span class="token md-operator" style="color: #cf222e">- </span>복잡한 로직은 주석으로 설명
+<span class="token md-operator" style="color: #cf222e">- </span>모든 문서와 주석은 한국어 작성</code></pre></div><p><br></p><p></p><p>글로벌 혹은 프로젝트 루트마다 CLAUDE.md 파일을 작성해서 기본적인 룰과 가이드를 세팅할 수 있다.</p><p>cd ~ 로 기본 디렉토리로 이동한 뒤에 ls -al 로 디릭토리를 살펴보면 .claude 라는 디렉토리를 확인할 수 있는데 이 디렉토리 하위에 CLAUDE.md를 넣거나 프로젝트 루트에 넣어주면 된다.</p><p>다만, context 분석시 토큰이 부담되기 때문에 코드베이스를 분석하거나 대용량 토큰일 투입되는 작업은 gemini cli 를 이용해서 분석과 작업을 맡기고, 나머지 실제 코딩에 해당하는 것들은 클로드 맥스를 통해 작업할 수 있다.</p><p>위에 md 파일을 CLAUDE.md 설정 파일에 추가해주고 터미널에서 gemini를 사용해서 분석을 해달라고 하면 클로드 코드 맥스의 토큰 소진이 거의 없이 코드를 분석할 수 있다.</p></body></html>
+  </div>
+</body>
+</html>
